@@ -2,8 +2,6 @@ package innoticon.server.req;
 
 import com.google.gson.annotations.Expose;
 
-import static innoticon.ds.Action.Type.REGISTERCLIENTREQ;
-
 /**
  *
  * @author novemberizing, me@novemberizing.net
@@ -11,33 +9,21 @@ import static innoticon.ds.Action.Type.REGISTERCLIENTREQ;
  */
 @SuppressWarnings({"DanglingJavadoc", "WeakerAccess", "unused"})
 public class Hello extends innoticon.ds.Req {
-    public static Hello Gen(){
-        innoticon.Client client = innoticon.Client.Get();
-        return new Hello(client.gen());
-    }
 
     @Expose public String device;
     @Expose public String app;
     @Expose public innoticon.ds.User user;
+    @Expose public innoticon.ds.Client.Key key;
 
     public String device(){ return device; }
     public String app(){ return app; }
     public innoticon.ds.User user(){ return user; }
+    public innoticon.ds.Client.Key key(){ return key; }
 
     public Hello(){
         this.device = null;
         this.app = null;
         this.user = null;
-    }
-
-    public Hello(long unique){
-        innoticon.Client client = innoticon.Client.Get();
-        /** action */
-        action = client.genAction(REGISTERCLIENTREQ, client.key(), innoticon.ds.Action.Key.Gen(unique));
-
-        /** detail */
-        this.device = client.dev();
-        this.app = client.app();
-        this.user = client.me();
+        this.key = null;
     }
 }
