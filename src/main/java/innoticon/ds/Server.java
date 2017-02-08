@@ -12,20 +12,13 @@ import java.util.HashMap;
 @SuppressWarnings({"WeakerAccess", "unused", "DanglingJavadoc"})
 public class Server {
 
-    @Expose public String uid;                              /** make named uuid */
-    @Expose public String name;                             /** email */
-    @Expose public String host;                             /** host name to be able to convert ip address or ... */
-    @Expose public HashMap<String, Integer> services;       /** service name, service port */
+    @Expose public String uid;              /** make named uuid */
+    @Expose public String name;             /** email */
+    @Expose public String app;
 
     public String uid(){ return uid; }
     public void uid(String v){ uid = v; }
 
     public String name(){ return name; }
     public void name(String v){ name = v; }
-
-    public String host(){ return host; }
-    public void host(String v){ host = v; }
-
-    public Integer service(String name){ return services.get(name); }
-    public HashMap<String, Integer> services(){ return services; }
 }

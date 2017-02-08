@@ -14,6 +14,8 @@ public class Req extends innoticon.ds.Json {
 
     public innoticon.ds.Action action(){ return action; }
 
+    public String path(){ return ""; }
+
     public int type(){ return action!=null ? action.type() : 0; }
 
     public Req(){ action = null; }

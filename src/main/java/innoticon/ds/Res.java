@@ -12,6 +12,8 @@ public class Res extends innoticon.ds.Json {
     @Expose public String api;
     @Expose public String error;
 
+    public String path(){ return ""; }
+
     public Action action(){ return action; }
     public String api(){ return api; }
     public String error(){ return error; }

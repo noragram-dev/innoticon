@@ -23,12 +23,9 @@ public class Client extends innoticon.ds.Json {
 
         @Expose public long timestamp;                      /** timestamp */
         @Expose public long unique;                         /** timestamp's unique */
-        @Expose public long generation;                     /** generation key number, received by server */
 
         public long timestamp(){ return timestamp; }        /** get timestamp */
         public void timestamp(long v){ timestamp = v; }     /** set timestamp */
-        public void generation(long v){ generation = v; }   /** set generation number */
-        public long generation(){ return generation; }      /** get generation number */
         public long unique(){ return unique; }              /** get unique */
         public void unique(long v){ unique = v; }           /** set unique */
 
