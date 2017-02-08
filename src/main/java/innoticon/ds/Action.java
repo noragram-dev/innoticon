@@ -1,0 +1,114 @@
+package innoticon.ds;
+
+import com.google.gson.annotations.Expose;
+
+/**
+ * action key
+ *
+ * @author novemberizing, me@novemberizing.net
+ * @since 2017. 2. 7.
+ */
+@SuppressWarnings({"DanglingJavadoc", "unused", "WeakerAccess", "PointlessArithmeticExpression"})
+public class Action extends innoticon.ds.Json {
+
+    public static class Type {
+        private static final int BASE = 0;
+
+        public static final int HELLOREQ = BASE + 1;
+        public static final int ADDEMAILREQ = BASE + 2;
+        public static final int ADDPHONEREQ = BASE + 3;
+        public static final int INVITEBYEMAILREQ = BASE + 4;
+        public static final int INVITEBYPHONEREQ = BASE + 5;
+        public static final int ACCEPTTOINVITEREQ = BASE + 6;
+        public static final int REJECTTOINVITEREQ = BASE + 7;
+        public static final int SENDMSGREQ = BASE + 8;
+        public static final int SETPROFILENAMEREQ = BASE + 9;
+
+        private static final int SERVER = -1;
+
+        public static final int REGISTERCLIENTREQ = SERVER * (BASE + 1);
+    }
+
+    /** action key */
+    public static class Key extends innoticon.ds.Key {
+
+        public interface Gen { Action.Key genActionKey(); }
+
+        /**
+         * action key generator only generate client key
+         *
+         * @param unique | long | unique |
+         * @return | string | generated key |
+         */
+        public static Key Gen(long unique){ return new Action.Key(innoticon.key.Local.Gen(unique)); }
+
+        @Expose public innoticon.key.Local c;                        /** client key */
+        @Expose public innoticon.key.Local s;                        /** server key */
+
+        public innoticon.key.Local c(){ return c; }
+        public innoticon.key.Local s(){ return s; }
+
+        public void c(innoticon.key.Local v){ c = v; }
+        public void s(innoticon.key.Local v){ s = v; }
+
+        @Override
+        public byte[] bytes(){
+            if(s!=null && c!=null){
+                byte[] clients = c.bytes();
+                byte[] servers = s.bytes();
+                byte[] bytes = new byte[32];
+                for(int i=0;i<16;i++){
+                    bytes[i*2] = clients[i];
+                    bytes[32 - i*2 - 1] = servers[i];
+                }
+                return bytes;
+            }
+            return null;
+        }
+
+        /** default constructor */
+        public Key(){
+            this.c = null;
+            this.s = null;
+        }
+
+        /**
+         * constructor to generate
+         * @param c | noragram.key.Local | client key |
+         */
+        public Key(innoticon.key.Local c){
+            this.c = c;
+            this.s = null;
+        }
+    }
+
+    public interface Gen {
+        innoticon.ds.Action genAction(int type, innoticon.ds.Client.Key client, innoticon.ds.Action.Key key);
+    }
+
+    @Expose public int type;                                        /** action type number */
+    @Expose public innoticon.ds.Client.Key client;                  /** client key */
+    @Expose public innoticon.ds.Action.Key key;                     /** action key */
+
+    public int type(){ return this.type; }                          /** get action type */
+    public void type(int v){ this.type = v; }                       /** set action type */
+
+    public innoticon.ds.Client.Key client(){ return client; }       /** get client key */
+    public void client(innoticon.ds.Client.Key v){ client = v;}     /** set client key */
+
+    public innoticon.ds.Action.Key key(){ return key; }             /** get action key */
+    public void key(innoticon.ds.Action.Key v){ key = v; }          /** set action key */
+
+    /** default constructor */
+    public Action(){
+        type = 0;
+        client = null;
+        key = null;
+    }
+
+    public Action(int type, innoticon.ds.Client.Key client, innoticon.ds.Action.Key key){
+        this.type = type;
+        this.client = client;
+        this.key = key;
+    }
+}
