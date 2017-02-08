@@ -2,7 +2,7 @@ package innoticon.server.req;
 
 import com.google.gson.annotations.Expose;
 
-import static innoticon.ds.Action.Type.HELLOREQ;
+import static innoticon.ds.Action.Type.REGISTERCLIENTREQ;
 
 /**
  *
@@ -33,7 +33,7 @@ public class Hello extends innoticon.ds.Req {
     public Hello(long unique){
         innoticon.Client client = innoticon.Client.Get();
         /** action */
-        action = client.genAction(HELLOREQ, client.key(), innoticon.ds.Action.Key.Gen(unique));
+        action = client.genAction(REGISTERCLIENTREQ, client.key(), innoticon.ds.Action.Key.Gen(unique));
 
         /** detail */
         this.device = client.dev();
