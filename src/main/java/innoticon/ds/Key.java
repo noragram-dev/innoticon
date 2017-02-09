@@ -17,7 +17,7 @@ public abstract class Key extends innoticon.ds.Json {
      *
      * @return | string | hex |
      */
-    public String hex(){ return Base64.getEncoder().encodeToString(bytes()); }
+    public String hex(){ return novemberizing.util.Hex.To(bytes()); }
 
     /**
      * key object to bytes
