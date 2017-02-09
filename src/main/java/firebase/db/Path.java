@@ -11,6 +11,7 @@ public class Path {
 
     public static String getUserClientRootPath(String uid){ return getUserRootPath(uid) + "/client"; }
     public static String getUserClientPath(String uid, String device, String app){ return getUserClientRootPath(uid) + "/" + device + "/" + app; }
+    
     public static String getUserClientRequestRootPath(String uid){ return getUserClientRootPath(uid) + "/request"; }
     public static String getUserClientRequestPath(String uid, String client, String action){ return getUserClientRequestRootPath(uid) + "/" + client + "/" + action; }
 
