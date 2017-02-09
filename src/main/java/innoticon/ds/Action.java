@@ -52,10 +52,10 @@ public class Action extends innoticon.ds.Json {
         public void s(innoticon.key.Local v){ s = v; }
 
         @Override
-        public byte[] bytes(){
+        public byte[] encode(){
             if(s!=null && c!=null){
-                byte[] clients = c.bytes();
-                byte[] servers = s.bytes();
+                byte[] clients = c.encode();
+                byte[] servers = s.encode();
                 byte[] bytes = new byte[32];
                 for(int i=0;i<16;i++){
                     bytes[i*2] = clients[i];
@@ -64,6 +64,24 @@ public class Action extends innoticon.ds.Json {
                 return bytes;
             }
             return null;
+        }
+
+        @Override
+        public boolean decode(byte[] bytes) {
+            if(bytes!=null && bytes.length==32){
+                byte[] clients = new byte[16];
+                byte[] servers = new byte[16];
+                for(int i=0;i<16;i++){
+                    clients[i] = bytes[i*2];
+                    servers[16 - i - 1] = bytes[i*2 + 1];
+                }
+                if(c==null){ c = new innoticon.key.Local(); }
+                if(s==null){ s = new innoticon.key.Local(); }
+                c.decode(clients);
+                s.decode(servers);
+                return true;
+            }
+            return false;
         }
 
         /** default constructor */

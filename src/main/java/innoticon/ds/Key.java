@@ -12,17 +12,20 @@ import java.util.Base64;
 @SuppressWarnings("unused")
 public abstract class Key extends innoticon.ds.Json {
 
+
     /**
      * key object to hex
      *
      * @return | string | hex |
      */
-    public String hex(){ return Base64.getEncoder().encodeToString(bytes()); }
+    public String hex(){ return novemberizing.util.Key.Encode(encode()); }
 
     /**
      * key object to bytes
      *
      * @return | byte[] | key's bytes |
      */
-    public abstract byte[] bytes();
+    public abstract byte[] encode();
+    public abstract boolean decode(byte[] arr);
+
 }

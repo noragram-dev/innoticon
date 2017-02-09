@@ -32,13 +32,29 @@ public class Local extends innoticon.ds.Key {
      * @return | byte[] | key's bytes, length is 16 |
      */
     @Override
-    public byte[] bytes() {
+    public byte[] encode() {
         byte[] timestamps = ByteBuffer.allocate(8).putLong(timestamp).array();
         byte[] uniques = ByteBuffer.allocate(8).putLong(unique).array();
         byte[] bytes = new byte[16];
         for(int i=0;i<8;i++){ bytes[i*2] = timestamps[8 - i -1]; }
         for(int i=0;i<8;i++){ bytes[i*2 + 1] = uniques[i]; }
         return bytes;
+    }
+
+    @Override
+    public boolean decode(byte[] arr) {
+        if(arr!=null && arr.length==16) {
+            byte[] timestamps = new byte[8];
+            byte[] uniques = new byte[8];
+            for (int i = 0; i < 8; i++) {
+                timestamps[8 - i - 1] = arr[i * 2];
+                uniques[i] = arr[i * 2 + 1];
+            }
+            timestamp = ByteBuffer.allocate(8).put(timestamps).getLong();
+            unique = ByteBuffer.allocate(8).put(uniques).getLong();
+            return true;
+        }
+        return false;
     }
 
     public long timestamp(){ return timestamp; }        /** get timestamp */
