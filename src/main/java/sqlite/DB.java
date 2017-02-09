@@ -11,10 +11,15 @@ import java.sql.SQLException;
  * @author novemberizing, me@novemberizing.net
  * @since 2017. 2. 9.
  */
+@SuppressWarnings({"WeakerAccess", "unused"})
 public class DB {
     private static final String Tag = "sqlite/db>";
-    private String __url = null;
-    private Connection __connection = null;
+    protected final String __url;
+    protected Connection __connection = null;
+
+    public DB(String url){
+        __url = url;
+    }
 
     public boolean open(){
         if(__connection==null){
