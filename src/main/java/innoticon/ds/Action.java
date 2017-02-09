@@ -59,7 +59,7 @@ public class Action extends innoticon.ds.Json {
                 byte[] bytes = new byte[32];
                 for(int i=0;i<16;i++){
                     bytes[i*2] = clients[i];
-                    bytes[32 - i*2 - 1] = servers[i];
+                    bytes[i*2 + 1] = servers[16 - i - 1];
                 }
                 return bytes;
             }
