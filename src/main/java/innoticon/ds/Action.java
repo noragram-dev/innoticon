@@ -67,7 +67,7 @@ public class Action extends innoticon.ds.Json {
         }
 
         @Override
-        public boolean decode(byte[] bytes) {
+        public innoticon.ds.Key decode(byte[] bytes) {
             if(bytes!=null && bytes.length==32){
                 byte[] clients = new byte[16];
                 byte[] servers = new byte[16];
@@ -79,9 +79,9 @@ public class Action extends innoticon.ds.Json {
                 if(s==null){ s = new innoticon.key.Local(); }
                 c.decode(clients);
                 s.decode(servers);
-                return true;
+                return this;
             }
-            return false;
+            return null;
         }
 
         /** default constructor */

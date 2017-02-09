@@ -45,7 +45,7 @@ public class Client extends innoticon.ds.Json {
         }
 
         @Override
-        public boolean decode(byte[] bytes) {
+        public innoticon.ds.Key decode(byte[] bytes) {
             if(bytes!=null && bytes.length==16) {
                 byte[] timestamps = new byte[8];
                 byte[] uniques = new byte[8];
@@ -55,9 +55,9 @@ public class Client extends innoticon.ds.Json {
                 }
                 timestamp = ByteBuffer.wrap(timestamps).getLong();
                 unique = ByteBuffer.wrap(uniques).getLong();
-                return true;
+                return this;
             }
-            return false;
+            return null;
         }
     }
 

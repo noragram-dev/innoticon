@@ -26,6 +26,6 @@ public abstract class Key extends innoticon.ds.Json {
      * @return | byte[] | key's bytes |
      */
     public abstract byte[] encode();
-    public abstract boolean decode(byte[] arr);
+    public abstract Key decode(byte[] arr);
 
 }
