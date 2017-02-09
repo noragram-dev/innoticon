@@ -38,11 +38,9 @@ public class Client extends innoticon.ds.Json {
         public byte[] bytes(){
             byte[] timestamps = ByteBuffer.allocate(8).putLong(timestamp).array();
             byte[] uniques = ByteBuffer.allocate(8).putLong(unique).array();
-            byte[] generations = ByteBuffer.allocate(8).putLong(generation).array();
-            byte[] bytes = new byte[24];
-            for(int i=0;i<8;i++){ bytes[i*3] = timestamps[8 - i - 1]; }
-            for(int i=0;i<8;i++){ bytes[i*3 + 1] = generations[i]; }
-            for(int i=0;i<8;i++){ bytes[i*3 + 2] = uniques[i]; }
+            byte[] bytes = new byte[16];
+            for(int i=0;i<8;i++){ bytes[i*2] = timestamps[8 - i - 1]; }
+            for(int i=0;i<8;i++){ bytes[i*2 + 1] = uniques[i]; }
             return bytes;
         }
     }

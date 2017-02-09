@@ -86,6 +86,9 @@ public class Action extends innoticon.ds.Json {
         innoticon.ds.Action genAction(int type, innoticon.ds.Client.Key client, innoticon.ds.Action.Key key);
     }
 
+    public static String root(Action action){ return action!=null ? (action.type()<0 ? "server" : "user") : null; }
+    public static String root(int type){ return type<0 ? "server" : "user"; }
+
     @Expose public int type;                                        /** action type number */
     @Expose public innoticon.ds.Client.Key client;                  /** client key */
     @Expose public innoticon.ds.Action.Key key;                     /** action key */
