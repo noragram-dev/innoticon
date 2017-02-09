@@ -42,16 +42,16 @@ public class Local extends innoticon.ds.Key {
     }
 
     @Override
-    public boolean decode(byte[] arr) {
-        if(arr!=null && arr.length==16) {
+    public boolean decode(byte[] bytes) {
+        if(bytes!=null && bytes.length==16) {
             byte[] timestamps = new byte[8];
             byte[] uniques = new byte[8];
             for (int i = 0; i < 8; i++) {
-                timestamps[8 - i - 1] = arr[i * 2];
-                uniques[i] = arr[i * 2 + 1];
+                timestamps[8 - i - 1] = bytes[i * 2];
+                uniques[i] = bytes[i * 2 + 1];
             }
-            timestamp = ByteBuffer.allocate(8).put(timestamps).getLong();
-            unique = ByteBuffer.allocate(8).put(uniques).getLong();
+            timestamp = ByteBuffer.wrap(timestamps).getLong();
+            unique = ByteBuffer.wrap(uniques).getLong();
             return true;
         }
         return false;
