@@ -75,7 +75,18 @@ public class Url {
         return __SignoutUrl;
     }
 
-    public static String getHelloUrl(){ return __helloUrl; }
+    public static String getHelloUrl(String device, String app) {
+        try {
+            return String.format("%s?device=%s&app=%s",
+                    __helloUrl,
+                    URLEncoder.encode(device, "UTF-8"),
+                    URLEncoder.encode(app, "UTF-8"));
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+//        return __helloUrl; }
 
     public static String getSetProfileNameUrl(String name) {
         try {
