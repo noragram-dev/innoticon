@@ -87,7 +87,7 @@ public abstract class Client implements Runnable,
         public Config(){
             __gson = null;
             __path = null;
-            unique = 0;
+            unique = System.currentTimeMillis();
         }
     }
 
