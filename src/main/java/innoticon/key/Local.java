@@ -36,8 +36,8 @@ public class Local extends innoticon.ds.Key {
         byte[] timestamps = ByteBuffer.allocate(8).putLong(timestamp).array();
         byte[] uniques = ByteBuffer.allocate(8).putLong(unique).array();
         byte[] bytes = new byte[16];
-        for(int i=0;i<8;i++){ bytes[i*2] = timestamps[i]; }
-        for(int i=0;i<8;i++){ bytes[16 - i*2 - 1] = uniques[i]; }
+        for(int i=0;i<8;i++){ bytes[i*2] = timestamps[8 - i -1]; }
+        for(int i=0;i<8;i++){ bytes[i*2 + 1] = uniques[i]; }
         return bytes;
     }
 
