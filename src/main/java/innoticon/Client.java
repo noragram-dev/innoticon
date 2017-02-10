@@ -118,7 +118,7 @@ public abstract class Client implements Runnable,
 
     protected Gson __gson;
 
-    @Expose protected innoticon.ds.Client.Key __key;
+//    @Expose protected innoticon.ds.Client.Key __key;
     @Expose protected String __dev;
     @Expose protected String __app;
     @Expose protected Config __config;
@@ -126,7 +126,7 @@ public abstract class Client implements Runnable,
     @Expose protected String __name;
     @Expose protected String __phone;
 
-    public innoticon.ds.Client.Key key(){ return __key; }
+    public abstract innoticon.ds.Client.Key key();
 
     public String dev(){ return __dev; }
     public String app(){ return __app; }
