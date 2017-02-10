@@ -24,6 +24,8 @@ public class Phone extends innoticon.ds.Req {
     public String phone(){ return phone; }
     public String v(){ return phone; }
 
+    public Phone(){}
+
     public Phone(long unique, String phone){
         innoticon.Client client = innoticon.Client.Get();
         /** action */

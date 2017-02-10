@@ -24,6 +24,8 @@ public class Email extends innoticon.ds.Req {
 
     public String v(){ return email; }
 
+    public Email(){}
+
     public Email(long unique, String email){
         innoticon.Client client = innoticon.Client.Get();
         /** action */
