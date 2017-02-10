@@ -17,6 +17,9 @@ public class Path {
 
     public static String getUserProfileRootPath(String uid){ return getUserRootPath(uid) + "/profile"; }
     public static String getUserProfileMainPath(String uid){ return getUserProfileRootPath(uid) + "/main"; }
+    public static String getUserProfileMainEmailPath(String uid){ return getUserProfileMainPath(uid) + "/email"; }
+    public static String getUserProfileMainPhonePath(String uid){ return getUserProfileMainPath(uid) + "/phone"; }
+    public static String getUserProfileMainNamePath(String uid){ return getUserProfileMainPath(uid) + "/phone"; }
     public static String getUserProfilePath(String uid, String provider){ return getUserProfileRootPath(uid) + "/" + provider; }
 
     public static String getUserInboxRootPath(String uid){ return getUserRootPath(uid) + "/inbox"; }
