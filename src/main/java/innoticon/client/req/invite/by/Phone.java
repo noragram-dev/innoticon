@@ -16,7 +16,10 @@ public class Phone extends innoticon.ds.Req {
         return new Phone(client.gen(), phone);
     }
 
+    @Expose public innoticon.ds.User from;
     @Expose public String phone;
+
+    public innoticon.ds.User from(){ return from; }
 
     public String phone(){ return phone; }
     public String v(){ return phone; }
@@ -27,6 +30,7 @@ public class Phone extends innoticon.ds.Req {
         action = client.genAction(INVITEBYPHONEREQ, client.key(), innoticon.ds.Action.Key.Gen(unique));
 
         /** detail */
+        this.from = client.me();
         this.phone = phone;
     }
 }

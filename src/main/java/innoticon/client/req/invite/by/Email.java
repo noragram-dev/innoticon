@@ -16,8 +16,10 @@ public class Email extends innoticon.ds.Req {
         return new Email(client.gen(), email);
     }
 
+    @Expose public innoticon.ds.User from;
     @Expose public String email;
 
+    public innoticon.ds.User from(){ return from; }
     public String email(){ return email; }
 
     public String v(){ return email; }
@@ -28,6 +30,7 @@ public class Email extends innoticon.ds.Req {
         action = client.genAction(INVITEBYEMAILREQ, client.key(), innoticon.ds.Action.Key.Gen(unique));
 
         /** detail */
+        this.from = new innoticon.ds.User(client.me());
         this.email = email;
     }
 }
