@@ -97,7 +97,7 @@ public class Data<T> extends novemberizing.rx.Observable<T> implements ValueEven
 
     @Override
     public void onDataChange(DataSnapshot snapshot) {
-        Log.e(Tag, this);
+        Log.d(Tag, this);
         try {
             emit(convert(snapshot));
         } catch(Exception e){
