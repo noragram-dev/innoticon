@@ -7,6 +7,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 
+import novemberizing.rx.Req;
 import novemberizing.util.Log;
 
 /**
@@ -16,6 +17,22 @@ import novemberizing.util.Log;
  */
 @SuppressWarnings({"unused", "WeakerAccess"})
 public class Data<T> extends novemberizing.rx.Observable<T> implements ValueEventListener {
+    public static <T> novemberizing.rx.Req.Factory<T> Req(String path, T o, Class<T> c){
+        return new novemberizing.rx.Req.Factory<T>(){
+            @Override
+            public Req<T> call() {
+                return new firebase.rx.Data<>(path, c).set(o);
+            }
+        };
+    }
+    public static <T> novemberizing.rx.Req.Factory<T> Req(String path, T o, GenericTypeIndicator<T> indicator){
+        return new novemberizing.rx.Req.Factory<T>(){
+            @Override
+            public Req<T> call() {
+                return new firebase.rx.Data<>(path, indicator).set(o);
+            }
+        };
+    }
     public static <T> novemberizing.rx.Req<T> Set(String path, T o, Class<T> c){ return new firebase.rx.Data<>(path, c).set(o); }
     public static <T> novemberizing.rx.Req<T> Set(String path, T o, GenericTypeIndicator<T> indicator){ return new firebase.rx.Data<>(path, indicator).set(o); }
 
