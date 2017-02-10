@@ -15,14 +15,16 @@ public class Action extends innoticon.ds.Json {
         private static final int BASE = 0;
 
         public static final int HELLOREQ = BASE + 1;
-        public static final int ADDEMAILREQ = BASE + 2;
-        public static final int ADDPHONEREQ = BASE + 3;
+//        public static final int ADDEMAILREQ = BASE + 2;
+//        public static final int ADDPHONEREQ = BASE + 3;
         public static final int INVITEBYEMAILREQ = BASE + 4;
         public static final int INVITEBYPHONEREQ = BASE + 5;
         public static final int ACCEPTTOINVITEREQ = BASE + 6;
         public static final int REJECTTOINVITEREQ = BASE + 7;
         public static final int SENDMSGREQ = BASE + 8;
         public static final int SETPROFILENAMEREQ = BASE + 9;
+        public static final int SETPROFILEPHONEREQ = BASE + 10;
+        public static final int SETPROFILEREQ = BASE + 11;
 
         private static final int SERVER = -1;
 

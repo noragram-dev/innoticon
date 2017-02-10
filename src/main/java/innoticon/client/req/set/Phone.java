@@ -1,8 +1,8 @@
-package innoticon.client.req.add;
+package innoticon.client.req.set;
 
 import com.google.gson.annotations.Expose;
 
-import static innoticon.ds.Action.Type.ADDPHONEREQ;
+import static innoticon.ds.Action.Type.SETPROFILEPHONEREQ;
 
 /**
  *
@@ -16,14 +16,15 @@ public class Phone extends innoticon.ds.Req {
         return new Phone(client.gen(), phone);
     }
 
-    @Expose public String phone;
+    @Expose
+    public String phone;
 
     public String v(){ return phone; }
 
     public Phone(long unique, String phone){
         innoticon.Client client = innoticon.Client.Get();
-        /** action */
-        action = client.genAction(ADDPHONEREQ, client.key(), innoticon.ds.Action.Key.Gen(unique));
+        /** set action */
+        action = client.genAction(SETPROFILEPHONEREQ, client.key(), innoticon.ds.Action.Key.Gen(unique));
 
         /** detail */
         this.phone = phone;
