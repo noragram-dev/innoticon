@@ -18,7 +18,7 @@ public class Path {
     public static String getUserClientRequestPath(String uid, innoticon.ds.Req req){ return getUserClientRequestRootPath(uid) + "/" + req.action.key.c.hex(); }
 
     public static String getUserClientResponsePath(String uid, innoticon.ds.Req req){ return getUserClientResponseRootPath(uid) + "/" + req.action.key.c.hex() + "/main"; }
-    public static String getUserClientResponsePath(String uid, innoticon.ds.Req req, innoticon.ds.Res.Key key){ return getUserClientRequestRootPath(uid) + "/" + req.action.key.c.hex() + "/" + key.hex(); }
+    public static String getUserClientResponsePath(String uid, innoticon.ds.Req req, innoticon.ds.Res.Key key){ return getUserClientRequestRootPath(uid) + "/" + req.action.key.c.hex() + "/" + req.action.key.s.hex() + "/" + key.hex(); }
 
     public static String getUserProfileRootPath(String uid){ return getUserRootPath(uid) + "/profile"; }
     public static String getUserProfileMainPath(String uid){ return getUserProfileRootPath(uid) + "/main"; }
