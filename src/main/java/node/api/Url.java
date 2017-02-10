@@ -88,16 +88,8 @@ public class Url {
     }
 //        return __helloUrl; }
 
-    public static String getSetProfileNameUrl(String name) {
-        try {
-            return String.format("%s?name=%s",
-                    __setProfileNameUrl,
-                    URLEncoder.encode(name,"UTF-8"));
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
+    public static String getSetProfileNameUrl(){ return __setProfileNameUrl; }
+
 
     public static String getAddPhoneUrl(){ return __addPhoneUrl; }
     public static String getAddEmailUrl(){ return __addEmailUrl; }

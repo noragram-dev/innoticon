@@ -41,14 +41,33 @@ public abstract class Client implements Runnable,
 
         @Expose private long unique;                                            /** management unique key */
         @Expose private innoticon.ds.User me;                                   /** me */
+        @Expose private String name;                                            /** name */
+        @Expose private String phone;                                           /** phone */
 
         public long unique(){ return unique; }                                  /** get unique key */
         public innoticon.ds.User me(){ return me; }                             /** get me */
         public innoticon.ds.Client client(){ return client; }                   /** get client */
+        public String name(){ return name; }
+        public String phone(){ return phone; }
+
+        public String name(String v){
+            name = v;
+            save();
+            return this.name;
+        }
+
+        public String phone(String v){
+            phone = v;
+            save();
+            return this.phone;
+        }
 
         /** set me */
         public innoticon.ds.User me(innoticon.ds.User v){
             this.me = v;
+            if(name==null && this.me!=null){
+                name = this.me.name;
+            }
             save();
             return this.me;
         }
@@ -104,6 +123,8 @@ public abstract class Client implements Runnable,
     @Expose protected String __app;
     @Expose protected Config __config;
     @Expose protected innoticon.ds.User __me;
+    @Expose protected String __name;
+    @Expose protected String __phone;
 
     public innoticon.ds.Client.Key key(){ return __key; }
 
@@ -111,6 +132,8 @@ public abstract class Client implements Runnable,
     public String app(){ return __app; }
     public Config config(){ return __config; }
     public innoticon.ds.User me(){ return __me; }
+    public String name(){ return __name; }
+    public String phone(){ return __phone; }
 
     public long gen(){ return __config.gen(); }
 
