@@ -12,7 +12,8 @@ import com.google.gson.annotations.Expose;
 public abstract class Client implements Runnable,
                                         innoticon.key.Local.Gen,
                                         innoticon.ds.Action.Key.Gen,
-                                        innoticon.ds.Action.Gen {
+                                        innoticon.ds.Action.Gen,
+                                        innoticon.ds.Res.Key.Gen {
 
     /**
      * client config class
@@ -140,6 +141,7 @@ public abstract class Client implements Runnable,
     @Override public innoticon.key.Local genLocalKey(){ return innoticon.key.Local.Gen(gen()); }
     @Override public innoticon.ds.Action.Key genActionKey() { return new innoticon.ds.Action.Key(genLocalKey()); }
     @Override public innoticon.ds.Action genAction(int type, innoticon.ds.Client.Key client, innoticon.ds.Action.Key key) { return new innoticon.ds.Action(type, client, key); }
+    @Override public innoticon.ds.Res.Key genResKey(){ return new innoticon.ds.Res.Key(genLocalKey()); }
 
     public abstract void init();
 

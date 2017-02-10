@@ -13,7 +13,17 @@ public class Path {
     public static String getUserClientPath(String uid, String device, String app){ return getUserClientRootPath(uid) + "/" + device + "/" + app; }
     
     public static String getUserClientRequestRootPath(String uid){ return getUserClientRootPath(uid) + "/request"; }
-    public static String getUserClientRequestPath(String uid, String client, String action){ return getUserClientRequestRootPath(uid) + "/" + client + "/" + action; }
+    public static String getUserClientResponseRootPath(String uid){ return getUserClientRootPath(uid) + "/response"; }
+
+    public static String getUserClientRequestPath(String uid, innoticon.ds.Req req){ return getUserClientRequestRootPath(uid) + "/" + req.action.key.c.hex(); }
+
+//    public static String getServerRootPath(String sid){ return "/server/" + sid; }
+//    public static String getServerRequestRootPath(String sid){ return getServerRootPath(sid) + "/request"; }
+//    public static String getServerResponseRootPath(String sid){ return getServerRootPath(sid) + "/response"; }
+//
+//    public static String getServerRequestPath(innoticon.ds.Req req){ return getServerRequestRootPath(req.action.client.hex()) + "/" + req.action.key.c.hex(); }
+//
+//    public static String getServerResponsePath(innoticon.ds.Req req){ return getServerResponseRootPath(req.action.client.hex()) + "/" + req.action.key.s.hex() + "/"; }
 
     public static String getUserProfileRootPath(String uid){ return getUserRootPath(uid) + "/profile"; }
     public static String getUserProfileMainPath(String uid){ return getUserProfileRootPath(uid) + "/main"; }
