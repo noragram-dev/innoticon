@@ -18,6 +18,7 @@ public class Phone extends innoticon.ds.Req {
 
     @Expose public String phone;
 
+    public String phone(){ return phone; }
     public String v(){ return phone; }
 
     public Phone(long unique, String phone){

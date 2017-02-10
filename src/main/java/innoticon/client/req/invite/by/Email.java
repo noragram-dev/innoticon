@@ -18,6 +18,8 @@ public class Email extends innoticon.ds.Req {
 
     @Expose public String email;
 
+    public String email(){ return email; }
+
     public String v(){ return email; }
 
     public Email(long unique, String email){
