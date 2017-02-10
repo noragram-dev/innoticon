@@ -18,9 +18,9 @@ public class User extends innoticon.ds.Json {
     public String name(){ return  name; }       /** get name */
     public String phone(){ return phone; }      /** get phone */
 
-    public void email(String v){ email = v; }   /** set email */
-    public void name(String v){ name = v; }     /** set nmee */
-    public void phone(String v){ phone = v; }   /** set phone */
+    public String email(String v){ return email = v; }   /** set email */
+    public String name(String v){ return name = v; }     /** set nmee */
+    public String phone(String v){ return phone = v; }   /** set phone */
 
     /** default constructor */
     public User(){
