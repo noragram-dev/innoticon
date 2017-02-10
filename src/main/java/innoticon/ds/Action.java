@@ -112,6 +112,7 @@ public class Action extends innoticon.ds.Json {
     @Expose public int type;                                        /** action type number */
     @Expose public innoticon.ds.Client.Key client;                  /** client key */
     @Expose public innoticon.ds.Action.Key key;                     /** action key */
+    @Expose private String uid;                                     /** hidden field */
 
     public int type(){ return this.type; }                          /** get action type */
     public void type(int v){ this.type = v; }                       /** set action type */
@@ -122,16 +123,20 @@ public class Action extends innoticon.ds.Json {
     public innoticon.ds.Action.Key key(){ return key; }             /** get action key */
     public void key(innoticon.ds.Action.Key v){ key = v; }          /** set action key */
 
+    public String uid(){ return uid; }
+
     /** default constructor */
     public Action(){
         type = 0;
         client = null;
         key = null;
+        uid = null;
     }
 
     public Action(int type, innoticon.ds.Client.Key client, innoticon.ds.Action.Key key){
         this.type = type;
         this.client = client;
         this.key = key;
+        this.uid = null;
     }
 }
