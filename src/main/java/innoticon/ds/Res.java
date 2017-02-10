@@ -15,4 +15,15 @@ public class Res extends innoticon.ds.Json {
     public Action action(){ return action; }
     public String api(){ return api; }
     public String error(){ return error; }
+
+    public Res(){
+        action = null;
+        api = null;
+        error = null;
+    }
+
+    public Res(String api,Action action){
+        this.api = api;
+        this.action = action;
+    }
 }
