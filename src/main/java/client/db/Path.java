@@ -1,4 +1,4 @@
-package firebase.db;
+package client.db;
 
 /**
  *
@@ -17,13 +17,8 @@ public class Path {
 
     public static String getUserClientRequestPath(String uid, innoticon.ds.Req req){ return getUserClientRequestRootPath(uid) + "/" + req.action.key.c.hex(); }
 
-//    public static String getServerRootPath(String sid){ return "/server/" + sid; }
-//    public static String getServerRequestRootPath(String sid){ return getServerRootPath(sid) + "/request"; }
-//    public static String getServerResponseRootPath(String sid){ return getServerRootPath(sid) + "/response"; }
-//
-//    public static String getServerRequestPath(innoticon.ds.Req req){ return getServerRequestRootPath(req.action.client.hex()) + "/" + req.action.key.c.hex(); }
-//
-//    public static String getServerResponsePath(innoticon.ds.Req req){ return getServerResponseRootPath(req.action.client.hex()) + "/" + req.action.key.s.hex() + "/"; }
+    public static String getUserClientResponsePath(String uid, innoticon.ds.Req req){ return getUserClientResponseRootPath(uid) + "/" + req.action.key.c.hex() + "/main"; }
+    public static String getUserClientResponsePath(String uid, innoticon.ds.Req req, innoticon.ds.Res.Key key){ return getUserClientRequestRootPath(uid) + "/" + req.action.key.c.hex() + "/" + key.hex(); }
 
     public static String getUserProfileRootPath(String uid){ return getUserRootPath(uid) + "/profile"; }
     public static String getUserProfileMainPath(String uid){ return getUserProfileRootPath(uid) + "/main"; }
