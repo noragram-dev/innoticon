@@ -31,6 +31,7 @@ public class Phone extends innoticon.ds.Req {
 
         /** detail */
         this.from = client.me();
+        this.from.uid = null;
         this.phone = phone;
     }
 }

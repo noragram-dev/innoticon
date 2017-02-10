@@ -31,6 +31,7 @@ public class Email extends innoticon.ds.Req {
 
         /** detail */
         this.from = new innoticon.ds.User(client.me());
+        this.from.uid = null;
         this.email = email;
     }
 }
