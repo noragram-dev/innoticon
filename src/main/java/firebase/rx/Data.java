@@ -104,7 +104,7 @@ public class Data<T> extends novemberizing.rx.Observable<T> implements ValueEven
     }
 
     public Data<T> on(){
-        if(__reference==null) {
+        if(__reference==null && __path!=null) {
             FirebaseDatabase database = FirebaseDatabase.getInstance();
             __reference = database.getReference(__path);
             __reference.addValueEventListener(this);
