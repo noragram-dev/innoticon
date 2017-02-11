@@ -30,7 +30,7 @@ public class Path {
     public static String getUserProfileMainPath(String uid) throws Exception { return getUserProfileRootPath(uid) + "/main"; }
     public static String getUserProfileMainEmailPath(String uid) throws Exception { return getUserProfileMainPath(uid) + "/email"; }
     public static String getUserProfileMainPhonePath(String uid) throws Exception { return getUserProfileMainPath(uid) + "/phone"; }
-    public static String getUserProfileMainNamePath(String uid) throws Exception { return getUserProfileMainPath(uid) + "/phone"; }
+    public static String getUserProfileMainNamePath(String uid) throws Exception { return getUserProfileMainPath(uid) + "/name"; }
     public static String getUserProfilePath(String uid, String provider) throws Exception { return getUserProfileRootPath(uid) + "/" + provider; }
 
     public static String getUserInboxRootPath(String uid) throws Exception { return getUserRootPath(uid) + "/inbox"; }
