@@ -133,4 +133,17 @@ public class Res extends innoticon.ds.Json {
         this.action = action;
         this.key = key;
     }
+
+    public Res(Class c, Throwable e, Action action){
+        this.api = c.getName().toLowerCase();
+        this.error = e.getMessage();
+        this.action = action;
+    }
+
+    public Res(Class c, Throwable e, Action action, innoticon.ds.Res.Key key){
+        this.api = c.getName().toLowerCase();
+        this.action = action;
+        this.error = e.getMessage();
+        this.key = key;
+    }
 }
