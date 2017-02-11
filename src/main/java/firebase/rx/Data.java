@@ -97,7 +97,7 @@ public class Data<T> extends novemberizing.rx.Observable<T> implements ValueEven
     @Override
     public T get(){ return super.get(); }
 
-    private T convert(DataSnapshot snapshot) throws Exception {
+    protected T convert(DataSnapshot snapshot) throws Exception {
         if(__indicator!=null) {
             return snapshot.getValue(__indicator);
         } else {
