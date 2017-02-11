@@ -10,7 +10,7 @@ import static innoticon.ds.Action.Type.ENABLEAPI;
 public class Enable extends innoticon.ds.Req {
 
     public enum Type {
-        CALENDAR,
+        CALENDAR, WEATHER
     }
     @Expose
     public Type type;
