@@ -38,10 +38,10 @@ public class Data<T> extends novemberizing.rx.Observable<T> implements ValueEven
 
     private static final String Tag = "firebase.rx.db>";
 
-    private DatabaseReference __reference;
-    private final String __path;
-    private final Class<T> __c;
-    private final GenericTypeIndicator<T> __indicator;
+    protected DatabaseReference __reference;
+    protected final String __path;
+    protected final Class<T> __c;
+    protected final GenericTypeIndicator<T> __indicator;
 
     public Data(String path, Class<T> c){
         __path = path;

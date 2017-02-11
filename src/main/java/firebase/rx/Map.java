@@ -15,10 +15,10 @@ public class Map<T> extends Observable<novemberizing.ds.tuple.Triple<Integer, St
     public static final int DELETE = 3;
     public static final int MOVE = 4;
 
-    private DatabaseReference __reference;
-    private final String __path;
-    private final Class<T> __c;
-    private final GenericTypeIndicator<T> __indicator;
+    protected DatabaseReference __reference;
+    protected final String __path;
+    protected final Class<T> __c;
+    protected final GenericTypeIndicator<T> __indicator;
 
     public Map(String path, Class<T> c){
         __path = path;
