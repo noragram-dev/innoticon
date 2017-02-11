@@ -36,6 +36,7 @@ public class Data<T> extends novemberizing.rx.Observable<T> implements ValueEven
     public static <T> novemberizing.rx.Req<T> Set(String path, T o, Class<T> c){ return new firebase.rx.Data<>(path, c).set(o); }
     public static <T> novemberizing.rx.Req<T> Set(String path, T o, GenericTypeIndicator<T> indicator){ return new firebase.rx.Data<>(path, indicator).set(o); }
 
+
     private static final String Tag = "firebase.rx.db>";
 
     protected DatabaseReference __reference;
@@ -55,6 +56,25 @@ public class Data<T> extends novemberizing.rx.Observable<T> implements ValueEven
         __c = null;
         __indicator = indicator;
         on();
+    }
+
+    public Data(String path, Class<T> c, boolean on){
+        __path = path;
+        __c = c;
+        __indicator = null;
+        if(on){
+            on();
+        }
+
+    }
+
+    public Data(String path, GenericTypeIndicator<T> indicator, boolean on){
+        __path = path;
+        __c = null;
+        __indicator = indicator;
+        if(on){
+            on();
+        }
     }
 
     public Data<T> on(){
