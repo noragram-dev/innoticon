@@ -84,17 +84,20 @@ public class Res extends innoticon.ds.Json {
     @Expose public Action action;
     @Expose public String api;
     @Expose public String error;
+    @Expose public String msg;
 
     public innoticon.ds.Res.Key key(){ return key; }
     public Action action(){ return action; }
     public String api(){ return api; }
     public String error(){ return error; }
+    public String msg(){ return msg; }
 
     public Res(){
         action = null;
         api = null;
         error = null;
         key = null;
+        msg = null;
     }
 
     public Res(String api,Action action){
@@ -104,6 +107,29 @@ public class Res extends innoticon.ds.Json {
 
     public Res(String api,Action action, innoticon.ds.Res.Key key){
         this.api = api;
+        this.action = action;
+        this.key = key;
+    }
+
+    public Res(Class c,Action action){
+        this.api = c.getName().toLowerCase();
+        this.action = action;
+    }
+    public Res(Class c, String msg, Action action){
+        this.api = c.getName().toLowerCase();
+        this.msg = msg;
+        this.action = action;
+    }
+
+    public Res(Class c, String msg, Action action, innoticon.ds.Res.Key key){
+        this.api = c.getName().toLowerCase();
+        this.action = action;
+        this.msg = msg;
+        this.key = key;
+    }
+
+    public Res(Class c,Action action, innoticon.ds.Res.Key key){
+        this.api = c.getName().toLowerCase();
         this.action = action;
         this.key = key;
     }
