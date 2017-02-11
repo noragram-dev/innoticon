@@ -10,7 +10,7 @@ public class Path {
     public static String getUserRootPath(String uid){ return "/user/" + uid; }
 
     public static String getUserClientRootPath(String uid){ return getUserRootPath(uid) + "/client"; }
-    public static String getUserClientPath(String uid, String device, String app){ return getUserClientRootPath(uid) + "/" + device + "/" + app; }
+    public static String getUserClientPath(String uid, String device, String app){ return getUserClientRootPath(uid) + "/device/" + device + "/" + app; }
     
     public static String getUserClientRequestRootPath(String uid){ return getUserClientRootPath(uid) + "/request"; }
     public static String getUserClientResponseRootPath(String uid){ return getUserClientRootPath(uid) + "/response"; }
