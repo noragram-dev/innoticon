@@ -43,11 +43,13 @@ public class Data<T> extends novemberizing.rx.Observable<T> implements ValueEven
     protected final String __path;
     protected final Class<T> __c;
     protected final GenericTypeIndicator<T> __indicator;
+    protected final boolean __once;
 
     public Data(String path, Class<T> c){
         __path = path;
         __c = c;
         __indicator = null;
+        __once = false;
         on();
     }
 
@@ -55,6 +57,7 @@ public class Data<T> extends novemberizing.rx.Observable<T> implements ValueEven
         __path = path;
         __c = null;
         __indicator = indicator;
+        __once = false;
         on();
     }
 
@@ -62,6 +65,7 @@ public class Data<T> extends novemberizing.rx.Observable<T> implements ValueEven
         __path = path;
         __c = c;
         __indicator = null;
+        __once = false;
         if(on){
             on();
         }
@@ -72,6 +76,28 @@ public class Data<T> extends novemberizing.rx.Observable<T> implements ValueEven
         __path = path;
         __c = null;
         __indicator = indicator;
+        __once = false;
+        if(on){
+            on();
+        }
+    }
+
+    public Data(String path, Class<T> c, boolean on, boolean once){
+        __path = path;
+        __c = c;
+        __indicator = null;
+        __once = once;
+        if(on){
+            on();
+        }
+
+    }
+
+    public Data(String path, GenericTypeIndicator<T> indicator, boolean on, boolean once){
+        __path = path;
+        __c = null;
+        __indicator = indicator;
+        __once = once;
         if(on){
             on();
         }
@@ -120,6 +146,9 @@ public class Data<T> extends novemberizing.rx.Observable<T> implements ValueEven
         Log.d(Tag, this);
         try {
             emit(convert(snapshot));
+            if(__once){
+                off();
+            }
         } catch(Exception e){
             error(e);
         }
@@ -129,5 +158,8 @@ public class Data<T> extends novemberizing.rx.Observable<T> implements ValueEven
     public void onCancelled(DatabaseError error) {
         Log.e(Tag, this);
         error(error.toException());
+        if(__once){
+            off();
+        }
     }
 }
