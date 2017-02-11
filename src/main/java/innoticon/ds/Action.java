@@ -29,6 +29,8 @@ public class Action extends innoticon.ds.Json {
         private static final int SERVER = -1;
 
         public static final int REGISTERCLIENTREQ = SERVER * (BASE + 1);
+        public static final int HELLOCLIENTREQ = SERVER * (BASE + 2);
+        public static final int HELLOSERVERREQ = SERVER * (BASE + 3);
     }
 
     /** action key */
