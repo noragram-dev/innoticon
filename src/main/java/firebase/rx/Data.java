@@ -21,7 +21,7 @@ public class Data<T> extends novemberizing.rx.Observable<T> implements ValueEven
         return new novemberizing.rx.Req.Factory<T>(){
             @Override
             public Req<T> call() {
-                return new firebase.rx.Data<>(path, c).set(o);
+                return new firebase.rx.Data<>(path, c, false).set(o);
             }
         };
     }
@@ -29,7 +29,7 @@ public class Data<T> extends novemberizing.rx.Observable<T> implements ValueEven
         return new novemberizing.rx.Req.Factory<T>(){
             @Override
             public Req<T> call() {
-                return new firebase.rx.Data<>(path, indicator).set(o);
+                return new firebase.rx.Data<>(path, indicator, false).set(o);
             }
         };
     }
