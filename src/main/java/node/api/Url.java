@@ -20,9 +20,9 @@ public class Url {
 
     private static final String __userUrl  = __noragramUrl + "/user";
 
-    private static final String __SignupUrl = __userUrl + "/api/email/signup";
-    private static final String __SigninUrl = __userUrl + "/api/email/signin";
-    private static final String __SignoutUrl = __userUrl + "/api/signout";
+    private static final String __SignupUrl = __userUrl + "/auth/email/signup";
+    private static final String __SigninUrl = __userUrl + "/auth/email/signin";
+    private static final String __SignoutUrl = __userUrl + "/auth/signout";
     private static final String __helloUrl = __userUrl + "/hello";
     private static final String __setProfileNameUrl = __userUrl + "/set/profile/name";
     private static final String __addEmailUrl = __userUrl + "/add/email";
