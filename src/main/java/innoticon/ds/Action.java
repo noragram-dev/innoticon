@@ -25,6 +25,7 @@ public class Action extends innoticon.ds.Json {
         public static final int SETPROFILENAMEREQ = BASE + 9;
         public static final int SETPROFILEPHONEREQ = BASE + 10;
         public static final int SETPROFILEREQ = BASE + 11;
+        public static final int ENABLEAPI = BASE + 12;
 
         private static final int SERVER = -1;
 
