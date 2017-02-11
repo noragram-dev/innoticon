@@ -15,16 +15,16 @@ public class Path {
     public static String getUserClientRootPath(String uid) throws Exception { return getUserRootPath(uid) + "/client"; }
     public static String getUserClientPath(String uid, String device, String app) throws Exception {
         if(device==null || app==null){ throw new Exception("device==null || app==null"); }
-        return getUserClientRootPath(uid) + "/device/" + device + "/" + app;
+        return getUserClientRootPath(uid) + "/" + device + "/" + app;
     }
     
-    public static String getUserClientRequestRootPath(String uid) throws Exception { return getUserClientRootPath(uid) + "/request"; }
-    public static String getUserClientResponseRootPath(String uid) throws Exception { return getUserClientRootPath(uid) + "/response"; }
+    public static String getUserRequestRootPath(String uid) throws Exception { return getUserRootPath(uid) + "/request"; }
+    public static String getUserResponseRootPath(String uid) throws Exception { return getUserRootPath(uid) + "/response"; }
 
-    public static String getUserClientRequestPath(String uid, innoticon.ds.Req req) throws Exception { return getUserClientRequestRootPath(uid) + "/" + req.action.key.c.hex(); }
+    public static String getUserRequestPath(String uid, innoticon.ds.Req req) throws Exception { return getUserRequestRootPath(uid) + "/" + req.action.key.s.hex(); }
 
-    public static String getUserClientResponsePath(String uid, innoticon.ds.Req req) throws Exception { return getUserClientResponseRootPath(uid) + "/" + req.action.key.c.hex() + "/main"; }
-    public static String getUserClientResponsePath(String uid, innoticon.ds.Req req, innoticon.ds.Res.Key key) throws Exception { return getUserClientRequestRootPath(uid) + "/" + req.action.key.c.hex() + "/" + req.action.key.s.hex() + "/" + key.hex(); }
+    public static String getUserResponsePath(String uid, innoticon.ds.Req req) throws Exception { return getUserResponseRootPath(uid) + "/" + req.action.key.s.hex() + "/main"; }
+    public static String getUserResponsePath(String uid, innoticon.ds.Req req, innoticon.ds.Res.Key key) throws Exception { return getUserResponseRootPath(uid) + "/" + req.action.key.s.hex() + "/" + req.action.key.c.hex() + "/" + key.hex(); }
 
     public static String getUserProfileRootPath(String uid) throws Exception { return getUserRootPath(uid) + "/profile"; }
     public static String getUserProfileMainPath(String uid) throws Exception { return getUserProfileRootPath(uid) + "/main"; }
