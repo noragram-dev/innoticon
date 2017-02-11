@@ -98,4 +98,9 @@ public class Path {
         if(uid==null || friend==null){ return null; }
         return getUserFriendRootPath(uid) + "/" + friend;
     }
+
+    public static String getUserFriendUpdateTimePath(String uid, String friend){
+        if(uid==null || friend==null){ return null; }
+        return getUserFriendRootPath(uid) + "/" + friend + "/update";
+    }
 }
