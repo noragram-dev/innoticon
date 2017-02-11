@@ -10,9 +10,10 @@ repositories {
     maven { url "https://jitpack.io" }
 }
 
+/** 0.0.38 */
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.11'
     compile 'com.google.code.gson:gson:2.8.0'
-    compile 'com.github.novemberizing:novemberizing.rx:0.1.61'
+    compile 'com.github.novemberizing:novemberizing.rx:0.1.67'
     compile 'com.google.firebase:firebase-admin:4.1.1'
 }

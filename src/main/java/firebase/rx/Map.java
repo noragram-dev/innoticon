@@ -24,6 +24,7 @@ public class Map<T> extends Observable<novemberizing.ds.tuple.Triple<Integer, St
         __path = path;
         __c = c;
         __indicator = null;
+        if(__path==null){ error(new Exception("__path is null")); }
         on();
     }
 
@@ -31,11 +32,12 @@ public class Map<T> extends Observable<novemberizing.ds.tuple.Triple<Integer, St
         __path = path;
         __c = null;
         __indicator = indicator;
+        if(__path==null){ error(new Exception("__path is null")); }
         on();
     }
 
     public Map<T> on(){
-        if(__reference==null) {
+        if(__reference==null && __path!=null) {
             FirebaseDatabase database = FirebaseDatabase.getInstance();
             __reference = database.getReference(__path);
             __reference.addChildEventListener(this);
