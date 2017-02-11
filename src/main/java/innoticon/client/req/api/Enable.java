@@ -1,7 +1,6 @@
 package innoticon.client.req.api;
 
 import com.google.gson.annotations.Expose;
-import innoticon.client.req.set.Phone;
 
 import static innoticon.ds.Action.Type.ENABLEAPI;
 
@@ -15,23 +14,24 @@ public class Enable extends innoticon.ds.Req {
     }
     @Expose
     public Type type;
-    public String authToken;
+    @Expose
+    public String refreshToken;
 
     public String getTypeName(){ return type.name(); }
-    public String getAuthToken(){ return authToken; }
+    public String getRefreshToken(){ return refreshToken; }
 
-    public static Enable Gen(Type type, String authToken){
+    public static Enable Gen(String type, String refreshToken){
         innoticon.Client client = innoticon.Client.Get();
-        return new Enable(client.gen(), type, authToken);
+        return new Enable(client.gen(), type, refreshToken);
     }
 
-    public Enable(long unique, Type type, String authToken){
+    public Enable(long unique, String type, String refreshToken){
         innoticon.Client client = innoticon.Client.Get();
         /** set action */
         action = client.genAction(ENABLEAPI, client.key(), innoticon.ds.Action.Key.Gen(unique));
 
         /** detail */
-        this.type = type;
-        this.authToken = authToken;
+        this.type = Type.valueOf(type);
+        this.refreshToken = refreshToken;
     }
 }
