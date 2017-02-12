@@ -53,7 +53,9 @@ public class Data<T> extends novemberizing.rx.Observable<T> implements ValueEven
         __path = path;
         __c = null;
         __indicator = null;
-        __once = false;
+        __once = true;
+        on();
+
     }
 
     public Data(String path, Class<T> c){
@@ -147,10 +149,20 @@ public class Data<T> extends novemberizing.rx.Observable<T> implements ValueEven
     }
 
     public novemberizing.rx.Req<T> set(T o){
+        if(__reference==null){
+            FirebaseDatabase database = FirebaseDatabase.getInstance();
+            __reference = database.getReference(__path);
+        }
         return req(novemberizing.rx.Operator.Req(o, (value, res) -> __reference.setValue(value, (e, reference) -> {
             if (e != null) {
+                if(__once){
+                    off();
+                }
                 res.error(e.toException());
             } else {
+                if(__once){
+                    off();
+                }
                 res.complete();
             }
         })));
