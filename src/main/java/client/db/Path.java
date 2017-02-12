@@ -32,16 +32,16 @@ public class Path {
 
     public static String getUserRequestPath(String uid, innoticon.ds.Req req){
         if(uid==null || req==null){ return null; }
-        return getUserRequestPath(uid, req);
+        return getUserRequestPath(uid, req.action);
     }
 
     public static String getUserResponsePath(String uid, innoticon.ds.Req req){
         if(uid==null || req==null){ return null; }
-        return getUserResponsePath(uid, req);
+        return getUserResponsePath(uid, req.action);
     }
     public static String getUserResponsePath(String uid, innoticon.ds.Req req, innoticon.ds.Res.Key key) {
         if(uid==null || req==null){ return null; }
-        return getUserResponsePath(uid, req, key);
+        return getUserResponsePath(uid, req.action, key);
     }
 
     public static String getUserRequestPath(String uid, innoticon.ds.Action action){
