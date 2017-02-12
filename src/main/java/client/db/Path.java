@@ -83,6 +83,9 @@ public class Path {
         return getUserProfileRootPath(uid) + "/" + provider;
     }
 
+    public static String getUserApiRootPath(String uid) { return getUserRootPath(uid) + "/api"; }
+    public static String getUserApiPath(String uid, String name){ return getUserApiRootPath(uid) + "/" + name; }
+
     public static String getUserInboxRootPath(String uid) {
         if(uid==null){ return null; }
         return getUserRootPath(uid) + "/inbox";
