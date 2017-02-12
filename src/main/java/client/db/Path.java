@@ -146,4 +146,14 @@ public class Path {
         if(uid==null || user==null) { return null; }
         return getUserRootPath(uid) + "/mute/" + user;
     }
+
+    public static String getUserDialogRootPath(String uid){
+        if(uid==null){ return null; }
+        return getUserRootPath(uid) + "/dialog";
+    }
+
+    public static String getUserDialogPath(String uid, innoticon.req.Dialog.Key key){
+        if(uid==null || key==null){ return null; }
+        return getUserDialogRootPath(uid) + "/" + key.hex();
+    }
 }

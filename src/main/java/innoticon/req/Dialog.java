@@ -19,21 +19,25 @@ public class Dialog extends innoticon.ds.Req {
         @Expose public String title;
         @Expose public String password;
         @Expose public long timestamp;
+        @Expose public Dialog.Key key;
 
         public String title(){ return title; }
         public String password(){ return password; }
         public long timestamp(){ return timestamp; }
+        public Dialog.Key key(){ return key; }
 
         public void title(String v){ title = v; }
         public void password(String v){ this.password = v; }
         public void timestamp(long v){ this.timestamp = v; }
+        public void key(Dialog.Key v){ this.key = v; }
 
         public Info(){}
 
-        public Info(String title, String password, long timestamp){
+        public Info(String title, String password, long timestamp, Dialog.Key key){
             this.timestamp = timestamp;
             this.title = title;
             this.password = password;
+            this.key = key;
         }
     }
 
