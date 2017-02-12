@@ -10,16 +10,13 @@ import static innoticon.ds.Action.Type.INVITEBYPHONEREQ;
  * @since 2017. 2. 7.
  */
 @SuppressWarnings({"DanglingJavadoc", "WeakerAccess", "unused"})
-public class Phone extends innoticon.ds.Req {
+public class Phone extends innoticon.client.req.invite.Invite {
     public static Phone Gen(String phone){
         innoticon.Client client = innoticon.Client.Get();
         return new Phone(client.gen(), phone);
     }
 
-    @Expose public innoticon.ds.User from;
     @Expose public String phone;
-
-    public innoticon.ds.User from(){ return from; }
 
     public String phone(){ return phone; }
     public String v(){ return phone; }

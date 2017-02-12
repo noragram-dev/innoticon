@@ -10,16 +10,15 @@ import static innoticon.ds.Action.Type.INVITEBYEMAILREQ;
  * @since 2017. 2. 7.
  */
 @SuppressWarnings({"DanglingJavadoc", "WeakerAccess", "unused"})
-public class Email extends innoticon.ds.Req {
+public class Email extends innoticon.client.req.invite.Invite {
     public static Email Gen(String email){
         innoticon.Client client = innoticon.Client.Get();
         return new Email(client.gen(), email);
     }
 
-    @Expose public innoticon.ds.User from;
     @Expose public String email;
 
-    public innoticon.ds.User from(){ return from; }
+
     public String email(){ return email; }
 
     public String v(){ return email; }
