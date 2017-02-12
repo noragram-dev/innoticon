@@ -14,12 +14,20 @@ public class Accept extends innoticon.ds.Req {
 
     public static Accept Gen(String uid, innoticon.client.req.invite.Invite invite) {
         innoticon.Client client = innoticon.Client.Get();
-        return new Accept(client.gen(), uid, invite);
+        if(invite!=null) {
+            return new Accept(client.gen(), uid, invite);
+        } else {
+            return null;
+        }
     }
 
     public static Accept Gen(String uid, innoticon.client.req.invite.Invite invite, String greeting) {
         innoticon.Client client = innoticon.Client.Get();
-        return new Accept(client.gen(), uid, invite, greeting);
+        if (invite != null){
+            return new Accept(client.gen(), uid, invite, greeting);
+        } else {
+            return null;
+        }
     }
 
     @Expose public innoticon.ds.User user = null;

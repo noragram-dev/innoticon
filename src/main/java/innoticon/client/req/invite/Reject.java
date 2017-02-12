@@ -13,14 +13,14 @@ import static innoticon.ds.Action.Type.REJECTTOINVITEREQ;
 @SuppressWarnings({"DanglingJavadoc", "WeakerAccess", "unused"})
 public class Reject extends innoticon.ds.Req {
 
-    public static Reject Gen(String uid, innoticon.ds.Req req) {
+    public static Reject Gen(String uid, innoticon.client.req.invite.Invite invite) {
         innoticon.Client client = innoticon.Client.Get();
-        return new Reject(client.gen(), uid, req);
+        return new Reject(client.gen(), uid, invite);
     }
 
-    public static Reject Gen(String uid, innoticon.ds.Req req, String greeting) {
+    public static Reject Gen(String uid, innoticon.client.req.invite.Invite invite, String greeting) {
         innoticon.Client client = innoticon.Client.Get();
-        return new Reject(client.gen(), uid, req, greeting);
+        return new Reject(client.gen(), uid, invite, greeting);
     }
 
     @Expose public String uid;
@@ -41,23 +41,23 @@ public class Reject extends innoticon.ds.Req {
         this.res = res;
     }
 
-    public Reject(long unique, String uid, innoticon.ds.Req req) {
+    public Reject(long unique, String uid, innoticon.client.req.invite.Invite invite) {
         innoticon.Client client = innoticon.Client.Get();
 
         /** generate client key */
         action = client.genAction(REJECTTOINVITEREQ, client.key(), innoticon.ds.Action.Key.Gen(unique));
         /** detail */
         this.uid = uid;
-        this.res = new innoticon.ds.Res(req.getClass(),req.action(),client.genResKey());
+        this.res = new innoticon.ds.Res(invite.getClass(),invite.action(),client.genResKey());
     }
 
-    public Reject(long unique, String uid, innoticon.ds.Req req, String sorry) {
+    public Reject(long unique, String uid, innoticon.client.req.invite.Invite invite, String sorry) {
         innoticon.Client client = innoticon.Client.Get();
 
         /** generate client key */
         action = client.genAction(REJECTTOINVITEREQ, client.key(), innoticon.ds.Action.Key.Gen(unique));
         /** detail */
         this.uid = uid;
-        this.res = new innoticon.ds.Res(req.getClass(), sorry, req.action(),client.genResKey());
+        this.res = new innoticon.ds.Res(invite.getClass(), sorry, invite.action(),client.genResKey());
     }
 }
