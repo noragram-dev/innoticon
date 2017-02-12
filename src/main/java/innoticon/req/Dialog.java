@@ -9,7 +9,11 @@ import com.google.gson.annotations.Expose;
  * @since 2017. 2. 12.
  */
 public class Dialog extends innoticon.ds.Req {
-    public static class Key extends innoticon.key.Local {}
+    public static class Key extends innoticon.key.Local {
+        public static Dialog.Key Gen(String str){
+            return (Dialog.Key) new Dialog.Key().decode(novemberizing.util.Key.Decode(str));
+        }
+    }
 
     @Expose public Dialog.Key key;
 
