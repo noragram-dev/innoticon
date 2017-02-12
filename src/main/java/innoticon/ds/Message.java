@@ -11,6 +11,8 @@ public interface Message {
         <T extends Message, Z extends Draw> Z draw(T message, Class<T> c);
     }
 
+    Envelope envelope();
+
     /**
      * make default drawable
      * @return | Draw | Android's Drawable object , ... |
