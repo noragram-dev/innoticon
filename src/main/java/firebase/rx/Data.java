@@ -10,6 +10,8 @@ import com.google.firebase.database.DatabaseError;
 import novemberizing.rx.Req;
 import novemberizing.util.Log;
 
+import java.util.HashMap;
+
 /**
  *
  * @author novemberizing, me@novemberizing.net
@@ -35,6 +37,19 @@ public class Data<T> extends novemberizing.rx.Observable<T> implements ValueEven
                 }
             };
         }
+
+        public static <T> novemberizing.rx.Req.Factory<HashMap<String, T>> Bulk(String path, HashMap<String, T> map, GenericTypeIndicator<HashMap<String, T>> indicator){
+            return new novemberizing.rx.Req.Factory<HashMap<String, T>>() {
+
+                @Override
+                public novemberizing.rx.Req<HashMap<String, T>> call() {
+                    return firebase.rx.Data.Bulk(path, map, indicator);
+                }
+            };
+        }
+    }
+    public static <T> novemberizing.rx.Req<HashMap<String, T>> Bulk(String path, HashMap<String, T> map, GenericTypeIndicator<HashMap<String, T>> indicator){
+        return new firebase.rx.Data<>(path, indicator, false).set(map);
     }
     public static <T> novemberizing.rx.Req<T> Set(String path, T o, Class<T> c){ return new firebase.rx.Data<>(path, c, false).set(o); }
     public static <T> novemberizing.rx.Req<T> Set(String path, T o, GenericTypeIndicator<T> indicator){ return new firebase.rx.Data<>(path, indicator,false).set(o); }
