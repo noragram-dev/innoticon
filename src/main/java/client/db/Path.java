@@ -103,4 +103,9 @@ public class Path {
         if(uid==null || friend==null){ return null; }
         return getUserFriendRootPath(uid) + "/" + friend + "/update";
     }
+
+    public static String getUserFriendProfilePath(String uid, String friend){
+        if(uid==null || friend==null){ return null; }
+        return getUserFriendRootPath(uid) + "/" + friend + "/profile";
+    }
 }
