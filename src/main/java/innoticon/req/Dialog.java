@@ -15,6 +15,28 @@ public class Dialog extends innoticon.ds.Req {
         }
     }
 
+    public static class Info extends innoticon.ds.Json {
+        @Expose public String title;
+        @Expose public String password;
+        @Expose public long timestamp;
+
+        public String title(){ return title; }
+        public String password(){ return password; }
+        public long timestamp(){ return timestamp; }
+
+        public void title(String v){ title = v; }
+        public void password(String v){ this.password = v; }
+        public void timestamp(long v){ this.timestamp = v; }
+
+        public Info(){}
+
+        public Info(String title, String password, long timestamp){
+            this.timestamp = timestamp;
+            this.title = title;
+            this.password = password;
+        }
+    }
+
     @Expose public Dialog.Key key;
 
     public Dialog(){
