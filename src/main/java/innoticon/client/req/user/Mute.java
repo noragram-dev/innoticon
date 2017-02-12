@@ -2,7 +2,7 @@ package innoticon.client.req.user;
 
 import com.google.gson.annotations.Expose;
 
-import static innoticon.ds.Action.Type.USERMUTE;
+import static innoticon.ds.Action.Type.USERMUTEREQ;
 
 /**
  *
@@ -23,7 +23,7 @@ public class Mute extends innoticon.ds.Req {
     public Mute(long unique, String uid){
         innoticon.Client client = innoticon.Client.Get();
         /** generate client key */
-        action = client.genAction(USERMUTE, client.key(), innoticon.ds.Action.Key.Gen(unique));
+        action = client.genAction(USERMUTEREQ, client.key(), innoticon.ds.Action.Key.Gen(unique));
         /** detail */
         this.uid = uid;
     }

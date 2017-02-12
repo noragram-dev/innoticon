@@ -2,7 +2,7 @@ package innoticon.client.req.user;
 
 import com.google.gson.annotations.Expose;
 
-import static innoticon.ds.Action.Type.USERUNBLOCK;
+import static innoticon.ds.Action.Type.USERUNBLOCKREQ;
 
 /**
  *
@@ -22,7 +22,7 @@ public class Unblock extends innoticon.ds.Req {
     public Unblock(long unique, String uid){
         innoticon.Client client = innoticon.Client.Get();
         /** generate client key */
-        action = client.genAction(USERUNBLOCK, client.key(), innoticon.ds.Action.Key.Gen(unique));
+        action = client.genAction(USERUNBLOCKREQ, client.key(), innoticon.ds.Action.Key.Gen(unique));
         /** detail */
         this.uid = uid;
     }
