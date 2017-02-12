@@ -17,25 +17,29 @@ import novemberizing.util.Log;
  */
 @SuppressWarnings({"unused", "WeakerAccess"})
 public class Data<T> extends novemberizing.rx.Observable<T> implements ValueEventListener {
-    public static <T> novemberizing.rx.Req.Factory<T> Req(String path, T o, Class<T> c){
-        return new novemberizing.rx.Req.Factory<T>(){
-            @Override
-            public Req<T> call() {
-                return new firebase.rx.Data<>(path, c, false).set(o);
-            }
-        };
-    }
-    public static <T> novemberizing.rx.Req.Factory<T> Req(String path, T o, GenericTypeIndicator<T> indicator){
-        return new novemberizing.rx.Req.Factory<T>(){
-            @Override
-            public Req<T> call() {
-                return new firebase.rx.Data<>(path, indicator, false).set(o);
-            }
-        };
-    }
-    public static <T> novemberizing.rx.Req<T> Set(String path, T o, Class<T> c){ return new firebase.rx.Data<>(path, c).set(o); }
-    public static <T> novemberizing.rx.Req<T> Set(String path, T o, GenericTypeIndicator<T> indicator){ return new firebase.rx.Data<>(path, indicator).set(o); }
+    public static class Req {
+        public static <T> novemberizing.rx.Req.Factory<T> Set(String path, T o, Class<T> c) {
+            return new novemberizing.rx.Req.Factory<T>() {
+                @Override
+                public novemberizing.rx.Req<T> call() {
+                    return new firebase.rx.Data<>(path, c, false).set(o);
+                }
+            };
+        }
 
+        public static <T> novemberizing.rx.Req.Factory<T> Set(String path, T o, GenericTypeIndicator<T> indicator) {
+            return new novemberizing.rx.Req.Factory<T>() {
+                @Override
+                public novemberizing.rx.Req<T> call() {
+                    return new firebase.rx.Data<>(path, indicator, false).set(o);
+                }
+            };
+        }
+    }
+    public static <T> novemberizing.rx.Req<T> Set(String path, T o, Class<T> c){ return new firebase.rx.Data<>(path, c, false).set(o); }
+    public static <T> novemberizing.rx.Req<T> Set(String path, T o, GenericTypeIndicator<T> indicator){ return new firebase.rx.Data<>(path, indicator,false).set(o); }
+
+    public static novemberizing.rx.Req Del(String path){ return new firebase.rx.Data(path).del(); }
 
     private static final String Tag = "firebase.rx.db>";
 
@@ -44,6 +48,13 @@ public class Data<T> extends novemberizing.rx.Observable<T> implements ValueEven
     protected final Class<T> __c;
     protected final GenericTypeIndicator<T> __indicator;
     protected final boolean __once;
+
+    private Data(String path){
+        __path = path;
+        __c = null;
+        __indicator = null;
+        __once = false;
+    }
 
     public Data(String path, Class<T> c){
         __path = path;
@@ -123,11 +134,15 @@ public class Data<T> extends novemberizing.rx.Observable<T> implements ValueEven
     @Override
     public T get(){ return super.get(); }
 
+    public novemberizing.rx.Req<T> del(){ return set(null); }
+
     protected T convert(DataSnapshot snapshot) throws Exception {
-        if(__indicator!=null) {
+        if (__indicator != null) {
             return snapshot.getValue(__indicator);
-        } else {
+        } else if (__c != null) {
             return snapshot.getValue(__c);
+        } else {
+            return null;
         }
     }
 
