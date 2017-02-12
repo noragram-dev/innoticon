@@ -70,6 +70,7 @@ public class Create extends Dialog {
         /** set detail */
         this.title = title;
         this.password = null;
+        add(client.me());
     }
 
     public Create(long unique,String title, String password){
