@@ -16,4 +16,8 @@ public class Dialog extends innoticon.ds.Req {
     public Dialog(){
         this.key = null;
     }
+
+    public Dialog(long unique, int type) {
+        super(unique, type);
+    }
 }

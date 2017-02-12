@@ -117,6 +117,11 @@ public abstract class Client implements Runnable,
 
     public static Client Get(){ return __singleton; }
 
+    public static long Gen(){
+        Client client = Get();
+        return client.gen();
+    }
+
     protected Gson __gson;
 
 //    @Expose protected innoticon.ds.Client.Key __key;
