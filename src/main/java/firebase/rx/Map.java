@@ -125,28 +125,9 @@ public class Map<T> extends Observable<novemberizing.ds.tuple.Triple<Integer, St
         }
     }
 
-    @Override
-    public void onCancelled(DatabaseError e) {
-        error(e.toException());
-    }
-
-    @Override
-    public T get(String key) {
-        return null;
-    }
-
-    @Override
-    public T set(String key, T value) {
-        return null;
-    }
-
-    @Override
-    public T del(String key) {
-        return null;
-    }
-
-    @Override
-    public int size() {
-        return 0;
-    }
+    @Override public void onCancelled(DatabaseError e) { error(e.toException()); }
+    @Override public T get(String key) { return __map!=null ? __map.get(key) : null; }
+    @Override public T set(String key, T value) { return __map!=null ? __map.set(key, value) : null; }
+    @Override public T del(String key) { return __map!=null ? __map.del(key) : null; }
+    @Override public int size() { return __map!=null ? __map.size() : 0; }
 }
