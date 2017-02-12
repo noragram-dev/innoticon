@@ -90,6 +90,7 @@ public class Path {
         if(uid==null){ return null; }
         return getUserRootPath(uid) + "/inbox";
     }
+
     public static String getUserInvitationInboxRootPath(String uid) {
         if(uid==null){ return null; }
         return getUserInboxRootPath(uid) + "/invitation";

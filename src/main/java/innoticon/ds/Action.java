@@ -31,6 +31,13 @@ public class Action extends innoticon.ds.Json {
         public static final int USERUNBLOCKREQ = BASE + 15;
         public static final int USERUNMUTEREQ = BASE + 16;
 
+        public static final int DIALOG_BASE = 10000;
+        public static final int DIALOG_CREATE_REQ = DIALOG_BASE + 1;
+        public static final int DIALOG_LEAVE_REQ = DIALOG_BASE + 2;
+        public static final int DIALOG_JOIN_REQ = DIALOG_BASE + 3;
+        public static final int DIALOG_INVITE_REQ = DIALOG_BASE + 3;
+
+
         private static final int SERVER = -1;
 
         public static final int REGISTERCLIENTREQ = SERVER * (BASE + 1);
