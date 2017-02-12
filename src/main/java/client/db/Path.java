@@ -125,4 +125,24 @@ public class Path {
         if(uid==null || friend==null){ return null; }
         return getUserFriendRootPath(uid) + "/" + friend + "/profile";
     }
+
+    public static String getUserBlockRootPath(String uid){
+        if(uid==null){ return null; }
+        return getUserRootPath(uid) + "/block";
+    }
+
+    public static String getUserBlockPath(String uid, String user){
+        if(uid==null || user==null) { return null; }
+        return getUserRootPath(uid) + "/block/" + user;
+    }
+
+    public static String getUserMuteRootPath(String uid){
+        if(uid==null){ return null; }
+        return getUserRootPath(uid) + "/mute";
+    }
+
+    public static String getUserMutePath(String uid, String user){
+        if(uid==null || user==null) { return null; }
+        return getUserRootPath(uid) + "/mute/" + user;
+    }
 }
