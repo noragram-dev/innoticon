@@ -11,6 +11,14 @@ import static innoticon.ds.Action.Type.DIALOG_JOIN_REQ;
  * @since 2017. 2. 12.
  */
 public class Join extends Dialog {
+    public static innoticon.req.dialog.Join Gen(innoticon.req.Dialog.Key key){
+        return new innoticon.req.dialog.Join(innoticon.Client.Gen(), key);
+    }
+
+    public static innoticon.req.dialog.Join Gen(innoticon.req.Dialog.Key key, String password){
+        return new innoticon.req.dialog.Join(innoticon.Client.Gen(), key, password);
+    }
+
     @Expose public innoticon.ds.User user;
     @Expose public String password;
 
@@ -19,17 +27,19 @@ public class Join extends Dialog {
         this.password = null;
     }
 
-    public Join(long unique) {
+    public Join(long unique, innoticon.req.Dialog.Key key) {
         super(unique, DIALOG_JOIN_REQ);
         innoticon.Client client = innoticon.Client.Get();
+        this.key = key;
         this.user = client.me();
         this.password = null;
     }
 
-    public Join(long unique, String password) {
+    public Join(long unique, innoticon.req.Dialog.Key key, String password) {
         super(unique, DIALOG_JOIN_REQ);
         /** no detail information */
         innoticon.Client client = innoticon.Client.Get();
+        this.key = key;
         this.user = client.me();
         this.password = password;
 
