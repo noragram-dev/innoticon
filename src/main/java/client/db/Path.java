@@ -31,17 +31,31 @@ public class Path {
     }
 
     public static String getUserRequestPath(String uid, innoticon.ds.Req req){
-        if(uid==null || req==null || req.action==null || req.action.key==null || req.action.key.s==null){ return null; }
-        return getUserRequestRootPath(uid) + "/" + req.action.key.s.hex();
+        if(uid==null || req==null){ return null; }
+        return getUserRequestPath(uid, req);
     }
 
     public static String getUserResponsePath(String uid, innoticon.ds.Req req){
-        if(uid==null || req==null || req.action==null || req.action.key==null || req.action.key.s==null){ return null; }
-        return getUserResponseRootPath(uid) + "/" + req.action.key.s.hex() + "/main";
+        if(uid==null || req==null){ return null; }
+        return getUserResponsePath(uid, req);
     }
     public static String getUserResponsePath(String uid, innoticon.ds.Req req, innoticon.ds.Res.Key key) {
-        if(uid==null || req==null || req.action==null || req.action.key==null || req.action.key.s==null || req.action.key.c==null || key==null){ return null; }
-        return getUserResponseRootPath(uid) + "/" + req.action.key.s.hex() + "/" + req.action.key.c.hex() + "/" + key.hex();
+        if(uid==null || req==null){ return null; }
+        return getUserResponsePath(uid, req, key);
+    }
+
+    public static String getUserRequestPath(String uid, innoticon.ds.Action action){
+        if(uid==null || action==null || action.key==null || action.key.s==null){ return null; }
+        return getUserRequestRootPath(uid) + "/" + action.key.s.hex();
+    }
+
+    public static String getUserResponsePath(String uid, innoticon.ds.Action action){
+        if(uid==null || action==null || action.key==null || action.key.s==null){ return null; }
+        return getUserResponseRootPath(uid) + "/" + action.key.s.hex() + "/main";
+    }
+    public static String getUserResponsePath(String uid, innoticon.ds.Action action, innoticon.ds.Res.Key key) {
+        if(uid==null || action==null || action.key==null || action.key.s==null || action.key.c==null || key==null){ return null; }
+        return getUserResponseRootPath(uid) + "/" + action.key.s.hex() + "/" + action.key.c.hex() + "/" + key.hex();
     }
 
     public static String getUserProfileRootPath(String uid){
