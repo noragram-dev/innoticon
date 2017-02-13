@@ -6,4 +6,8 @@ package innoticon.to;
  * @since 2017. 2. 12.
  */
 public class DialogUser extends innoticon.ds.To {
+    @Override
+    public String key() {
+        return null;
+    }
 }
