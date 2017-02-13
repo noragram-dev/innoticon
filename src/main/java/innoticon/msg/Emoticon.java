@@ -14,6 +14,8 @@ public class Emoticon extends innoticon.msg.Abstract {
     @Expose
     public String text = null;
 
-    public Emoticon(){}
+    public Emoticon(){
+        this.key = new innoticon.ds.Message.Key(getClass().getName());
+    }
 
 }

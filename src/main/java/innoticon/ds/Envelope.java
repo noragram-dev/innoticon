@@ -190,7 +190,7 @@ public class Envelope extends innoticon.ds.Req {
     }
 
     public Envelope add(innoticon.ds.Message message){
-        if(message!=null){
+        if(message!=null && message.key()!=null){
             if(messages==null){
                 messages = new HashMap<>();
             }

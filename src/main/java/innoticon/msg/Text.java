@@ -19,6 +19,7 @@ public class Text extends innoticon.msg.Abstract {
     public Text(){}
 
     public Text(String str){
+        this.key = new innoticon.ds.Message.Key(getClass().getName());
         this.str = str;
     }
 

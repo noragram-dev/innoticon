@@ -1,5 +1,7 @@
 package innoticon.ds;
 
+import com.google.gson.annotations.Expose;
+
 import java.util.Collection;
 
 /**
@@ -13,7 +15,15 @@ public interface Message {
         <T extends Message, Z> Z draw(T message, Class<T> c);
     }
 
-    class Key extends innoticon.key.Local {}
+    class Key extends innoticon.key.Local {
+        @Expose public String name = null;
+        public void name(String v){ name = v; }
+        public String name(){ return name; }
+        public Key(){}
+        public Key(String name){
+            this.name = name;
+        }
+    }
 
     Envelope envelope();                                /** get envelope */
     void envelope(Envelope v);                          /** set envelope */
