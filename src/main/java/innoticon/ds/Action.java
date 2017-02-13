@@ -37,6 +37,9 @@ public class Action extends innoticon.ds.Json {
         public static final int DIALOG_JOIN_REQ = DIALOG_BASE + 3;
         public static final int DIALOG_INVITE_REQ = DIALOG_BASE + 3;
 
+        public static final int ENVELOPE_BASE = 20000;
+        public static final int SEND_ENVELOPE_REQ = ENVELOPE_BASE + 1;
+
 
         private static final int SERVER = -1;
 

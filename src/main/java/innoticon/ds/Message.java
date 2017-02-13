@@ -5,24 +5,36 @@ package innoticon.ds;
  * @author novemberizing, me@novemberizing.net
  * @since 2017. 2. 12.
  */
+@SuppressWarnings("DanglingJavadoc")
 public interface Message {
     interface Builder {
         <T extends Message> String text(T message, Class<T> c);
-        <T extends Message, Z extends Draw> Z draw(T message, Class<T> c);
+        <T extends Message, Z extends Drawable> Z draw(T message, Class<T> c);
     }
 
-    Envelope envelope();
+    class Key extends innoticon.key.Local {}
+
+    Envelope envelope();                                /** get envelope */
+    void envelope(Envelope v);                          /** set envelope */
+
+    innoticon.ds.Message.Key key();                     /** get key */
+    void key(innoticon.ds.Message.Key v);               /** set key */
+
+    innoticon.ds.Message.Builder builder();             /** get builder */
+    void builder(innoticon.ds.Message.Builder v);       /** set builder */
+
+    long timestamp();                                   /** get timestamp by message key */
 
     /**
      * make default drawable
-     * @return | Draw | Android's Drawable object , ... |
+     * @return | Drawable | Android's Drawable object , ... |
      */
-    Draw drawable();
+    Drawable drawable();
     /**
      * make drawable to use the other builder
-     * @return | Draw | Android's Drawable object , ... |
+     * @return | Drawable | Android's Drawable object , ... |
      */
-    Draw drawable(Builder builder);
+    Drawable drawable(Builder builder);
 
     /**
      * make text message to use custom builder
@@ -36,11 +48,4 @@ public interface Message {
      * @return text message
      */
     String text();
-
-    /**
-     * set builder
-     * @param builder builder
-     * @return
-     */
-    Message builder(Builder builder);
 }

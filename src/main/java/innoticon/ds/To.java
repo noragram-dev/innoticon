@@ -20,6 +20,8 @@ public abstract class To implements innoticon.ds.Addr {
     @Expose public To.Type type;
     public To.Type type(){ return type; }
 
+    public abstract String key();
+
     /**
      *
      * @return database path, maybe inbox...
