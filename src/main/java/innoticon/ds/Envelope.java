@@ -125,6 +125,54 @@ public class Envelope extends innoticon.ds.Req {
         return this;
     }
 
+    public Envelope add(innoticon.ds.To to, innoticon.ds.To... destinations){
+        if(to!=null){
+            if(this.destinations==null){
+                this.destinations = new HashMap<>();
+            }
+            this.destinations.put(to.key(), to);
+        }
+        if(destinations!=null){
+            if(this.destinations==null){
+                this.destinations = new HashMap<>();
+            }
+            for(innoticon.ds.To destination: destinations){
+                if(destination!=null) {
+                    this.destinations.put(destination.key(), destination);
+                }
+            }
+        }
+        return this;
+    }
+
+    public Envelope add(innoticon.ds.To[] destinations){
+        if(destinations!=null){
+            if(this.destinations==null){
+                this.destinations = new HashMap<>();
+            }
+            for(innoticon.ds.To destination: destinations){
+                if(destination!=null) {
+                    this.destinations.put(destination.key(), destination);
+                }
+            }
+        }
+        return this;
+    }
+
+    public Envelope add(Collection<innoticon.ds.To> destinations){
+        if(destinations!=null){
+            if(this.destinations==null){
+                this.destinations = new HashMap<>();
+            }
+            for(innoticon.ds.To destination: destinations){
+                if(destination!=null) {
+                    this.destinations.put(destination.key(), destination);
+                }
+            }
+        }
+        return this;
+    }
+
     public Envelope del(innoticon.ds.To to){
         if(to!=null){
             if(destinations!=null){
