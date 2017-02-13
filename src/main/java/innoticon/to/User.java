@@ -31,4 +31,9 @@ public class User extends innoticon.ds.To {
 
     @Override
     public String key() { return type!=null && profile!=null ? type.name() + ":" + profile.uid() : null; }
+
+    @Override
+    public String id() {
+        return this.profile!=null ? this.profile.uid() : null;
+    }
 }
