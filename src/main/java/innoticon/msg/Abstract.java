@@ -12,7 +12,7 @@ import com.google.gson.annotations.Expose;
  * @since 2017. 2. 13.
  */
 @SuppressWarnings({"WeakerAccess", "unused"})
-public  abstract class Abstract implements innoticon.ds.Message {
+public  class Abstract implements innoticon.ds.Message {
     protected innoticon.ds.Envelope __envelope = null;
 
     @Expose public innoticon.ds.Message.Key key = null;

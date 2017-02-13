@@ -1,6 +1,8 @@
 package innoticon.ds;
 
+import com.google.gson.Gson;
 import com.google.gson.annotations.Expose;
+import novemberizing.util.Log;
 
 import java.util.HashMap;
 import java.util.Collection;
@@ -106,14 +108,30 @@ public class Envelope extends innoticon.ds.Req {
     /** because firebase/ firebase not support list */
     @Expose public HashMap<String,innoticon.ds.To> destinations = null;
     /** because firebase/ firebase not support list */
-    @Expose public HashMap<innoticon.ds.Message.Key, innoticon.ds.Message> messages = null;
+    @Expose public HashMap<innoticon.ds.Message.Key, String> messages = null;
 
     public innoticon.ds.From from(){ return from; }
     public HashMap<String,innoticon.ds.To> destinations(){ return destinations; }
-    public HashMap<innoticon.ds.Message.Key, innoticon.ds.Message> messages(){ return messages; }
+    public HashMap<innoticon.ds.Message.Key, String> messages(){ return messages; }
 
     public innoticon.ds.To destination(String key){ return destinations.get(key); }
-    public innoticon.ds.Message message(innoticon.ds.Message.Key key){ return messages.get(key); }
+
+    public innoticon.ds.Message message(innoticon.ds.Message.Key key) {
+        innoticon.ds.Message message = null;
+        if(key!=null){
+            Class<innoticon.ds.Message> c;
+            try {
+                c = (Class<innoticon.ds.Message>) Class.forName(key.name());
+                message = innoticon.Client.Deserialize(messages.get(key), c);
+            } catch (ClassNotFoundException e) {
+                Log.w("warning>", "class not found");
+                message = innoticon.Client.Deserialize(messages.get(key),innoticon.msg.Abstract.class);
+            } catch (ClassCastException e){
+                Log.e("critical>", e.getMessage());
+            }
+        }
+        return message;
+    }
 
     public Envelope add(innoticon.ds.To to){
         if(to!=null){
@@ -194,7 +212,7 @@ public class Envelope extends innoticon.ds.Req {
             if(messages==null){
                 messages = new HashMap<>();
             }
-            messages.put(message.key(), message);
+            messages.put(message.key(), innoticon.Client.Serialize(message));
         }
         return this;
     }

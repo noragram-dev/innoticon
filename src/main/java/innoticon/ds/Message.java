@@ -2,8 +2,6 @@ package innoticon.ds;
 
 import com.google.gson.annotations.Expose;
 
-import java.util.Collection;
-
 /**
  *
  * @author novemberizing, me@novemberizing.net
@@ -12,7 +10,15 @@ import java.util.Collection;
 @SuppressWarnings({"DanglingJavadoc", "unchecked", "unused"})
 public interface Message {
     interface Converter {
-        <T extends Message, Z> Z draw(T message, Class<T> c);
+        <T extends Message, Z> Z convert(T message, Class<T> c);
+    }
+
+    interface Serializer {
+        String serialize(innoticon.ds.Message message);
+    }
+
+    interface Deserializer {
+        <T extends innoticon.ds.Message> T deserialize(String str, Class<T> c);
     }
 
     class Key extends innoticon.key.Local {
