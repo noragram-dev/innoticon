@@ -17,7 +17,7 @@ public abstract class To implements innoticon.ds.Addr {
         DialogUser,
     }
 
-    @Expose public To.Type type;
+    @Expose public To.Type type = null;
     public To.Type type(){ return type; }
 
     public abstract String key();
