@@ -3,6 +3,7 @@ package innoticon.ds;
 import com.google.gson.annotations.Expose;
 
 import java.util.HashMap;
+import java.util.Collection;
 
 import static innoticon.ds.Action.Type.SEND_ENVELOPE_REQ;
 
@@ -13,12 +14,92 @@ import static innoticon.ds.Action.Type.SEND_ENVELOPE_REQ;
  */
 @SuppressWarnings({"WeakerAccess", "unused"})
 public class Envelope extends innoticon.ds.Req {
-    public static innoticon.ds.Envelope Gen(long unique){
+    public static innoticon.ds.Envelope Gen(){
         return new innoticon.ds.Envelope(innoticon.Client.Gen());
     }
 
-    public static innoticon.ds.Envelope Gen(long unique, innoticon.ds.From from){
+    @SafeVarargs
+    public static <T extends innoticon.ds.Message> innoticon.ds.Envelope Gen(T msg, T... messages){
+        innoticon.ds.Envelope envelope = Gen();
+        if(msg!=null){
+            envelope.add(msg);
+        }
+        if(messages!=null){
+            for(T message : messages){
+                if(message!=null){
+                    envelope.add(message);
+                }
+            }
+        }
+        return envelope;
+    }
+
+    public static <T extends innoticon.ds.Message> innoticon.ds.Envelope Gen(T[] messages){
+        innoticon.ds.Envelope envelope = Gen();
+        if(messages!=null){
+            for(T message : messages){
+                if(message!=null){
+                    envelope.add(message);
+                }
+            }
+        }
+        return envelope;
+    }
+
+    public static <T extends innoticon.ds.Message> innoticon.ds.Envelope Gen(Collection<T> messages){
+        innoticon.ds.Envelope envelope = Gen();
+        if(messages!=null){
+            for(T message : messages){
+                if(message!=null){
+                    envelope.add(message);
+                }
+            }
+        }
+        return envelope;
+    }
+
+    public static innoticon.ds.Envelope Gen(innoticon.ds.From from){
         return new innoticon.ds.Envelope(innoticon.Client.Gen(), from);
+    }
+
+    @SafeVarargs
+    public static <T extends innoticon.ds.Message> innoticon.ds.Envelope Gen(innoticon.ds.From from, T msg, T... messages){
+        innoticon.ds.Envelope envelope = Gen(from);
+        if(msg!=null){
+            envelope.add(msg);
+        }
+        if(messages!=null){
+            for(T message : messages){
+                if(message!=null){
+                    envelope.add(message);
+                }
+            }
+        }
+        return envelope;
+    }
+
+    public static <T extends innoticon.ds.Message> innoticon.ds.Envelope Gen(innoticon.ds.From from, T[] messages){
+        innoticon.ds.Envelope envelope = Gen(from);
+        if(messages!=null){
+            for(T message : messages){
+                if(message!=null){
+                    envelope.add(message);
+                }
+            }
+        }
+        return envelope;
+    }
+
+    public static <T extends innoticon.ds.Message> innoticon.ds.Envelope Gen(innoticon.ds.From from, Collection<T> messages){
+        innoticon.ds.Envelope envelope = Gen(from);
+        if(messages!=null){
+            for(T message : messages){
+                if(message!=null){
+                    envelope.add(message);
+                }
+            }
+        }
+        return envelope;
     }
 
     @Expose public innoticon.ds.From from = null;
