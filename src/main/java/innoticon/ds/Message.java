@@ -3,7 +3,7 @@ package innoticon.ds;
 import com.google.gson.annotations.Expose;
 
 /**
- *
+ * remove builder concept, replace serialize, deserialize, and converter
  * @author novemberizing, me@novemberizing.net
  * @since 2017. 2. 12.
  */
