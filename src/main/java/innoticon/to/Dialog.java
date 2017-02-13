@@ -10,4 +10,9 @@ public class Dialog extends innoticon.ds.To {
     public String key() {
         return null;
     }
+
+    @Override
+    public String id() {
+        return null;
+    }
 }
