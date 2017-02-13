@@ -7,6 +7,7 @@ import com.google.gson.annotations.Expose;
  */
 public class Emoticon extends innoticon.msg.Abstract {
     // Unique resource ID.
+
     @Expose
     public String resourceId = null;
     // Text description.
