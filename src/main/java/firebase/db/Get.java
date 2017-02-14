@@ -8,9 +8,9 @@ import com.google.firebase.database.*;
  * @author novemberizing, me@novemberizing.net
  * @since 2017. 2. 14.
  */
-public class Get<T> extends novemberizing.rx.Operator<novemberizing.ds.tuple.Pair<String, firebase.db.Deserializer<T>>, T> {
+public class Get<T> extends novemberizing.rx.Operator<novemberizing.ds.tuple.Pair<String, novemberizing.ds.Deserializer<DataSnapshot,T>>, T> {
     @Override
-    protected void on(Task<novemberizing.ds.tuple.Pair<String, firebase.db.Deserializer<T>>, T> task, novemberizing.ds.tuple.Pair<String, firebase.db.Deserializer<T>> in) {
+    protected void on(Task<novemberizing.ds.tuple.Pair<String, novemberizing.ds.Deserializer<DataSnapshot,T>>, T> task, novemberizing.ds.tuple.Pair<String, novemberizing.ds.Deserializer<DataSnapshot,T>> in) {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference reference = database.getReference(in.first);
         reference.addValueEventListener(new ValueEventListener() {
