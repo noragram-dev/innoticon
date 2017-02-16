@@ -14,6 +14,10 @@ public class Unmute extends innoticon.ds.Req {
         innoticon.Client client = innoticon.Client.Get();
         return new Unmute(client.gen(), uid);
     }
+    public static String Json(String uid){
+        innoticon.Client client = innoticon.Client.Get();
+        return client.toJson(Gen(uid));
+    }
     @Expose public String uid;
     public String uid(){ return uid; }
 

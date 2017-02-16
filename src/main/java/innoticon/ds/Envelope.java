@@ -24,6 +24,11 @@ public class Envelope extends innoticon.ds.Req {
         return new innoticon.ds.Envelope(innoticon.Client.Gen());
     }
 
+    public static String Json(innoticon.ds.Envelope envelope){
+        innoticon.Client client = innoticon.Client.Get();
+        return client.toJson(envelope);
+    }
+
     /**
      * generated with message
      * @param msg

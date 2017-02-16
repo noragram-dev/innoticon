@@ -164,6 +164,8 @@ public abstract class Client implements Runnable,
         return __config.me(__me);
     }
 
+    public <T> String toJson(T item){ return __gson.toJson(item); }
+
     public long gen(){ return __config.gen(); }
 
     @Override public innoticon.key.Local genLocalKey(){ return innoticon.key.Local.Gen(gen()); }
