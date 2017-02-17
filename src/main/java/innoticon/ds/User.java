@@ -19,13 +19,13 @@ public class User extends messenger.ds.User {
         this.uid = null;
     }
 
-    public User(String email, String name, String phone, String uid){
-        super(email, name, phone);
+    public User(String email, String name, String phone, String photo, String uid){
+        super(email, name, phone, photo);
         this.uid = uid;
     }
 
     public User(innoticon.ds.User u){
-        super(u.email, u.name, u.phone);
+        super(u.email, u.name, u.phone, u.photo);
         this.uid = u.uid;
     }
 }
