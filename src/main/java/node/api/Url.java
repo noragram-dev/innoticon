@@ -10,35 +10,35 @@ import java.net.URLEncoder;
  */
 @SuppressWarnings("unused")
 public class Url {
-    private static final String __protocol = "http";
+    private static String __protocol = "http";
     private static String __host = "127.0.0.1";
 
     public static void Host(String v){ __host = v; }
 
-    private static final String __noragramUrl = __protocol + "://" + __host + ":3000/noragram";
+    public static String getHiddenUrl(){ return __protocol + "://" +  __host + ":3000/hidden"; }
+    public static String getUserUrl(){ return getNoragramUrl() + "/user"; }
+    public static String getSignupUrl(){ return getUserUrl() + "/auth/email/signup"; }
+    public static String getSigninUrl(){ return getUserUrl() + "/auth/email/signin"; }
+    public static String getSignoutUrl(){ return getUserUrl() + "/auth/signout"; }
+    public static String getHelloUrl(){ return getUserUrl() + "hello"; }
+    public static String getSetProfileNameUrl(){ return getUserUrl() + "/set/profile/name"; }
+    public static String getAddEmailUrl() { return getUserUrl() + "/add/email"; }
+    public static String getAddPhoneUrl() { return getUserUrl() + "/add/phone"; }
+    public static String getInviteByPhoneUrl(){ return getUserUrl() + "/invite/by/phone"; }
+    public static String getInviteByEmailUrl(){ return getUserUrl() + "/invite/by/email";  }
 
-    private static final String __hiddenUrl = __protocol + "://" +  __host + ":3000/hidden";
+    public static String getAcceptToInviteUrl(){ return getUserUrl() + "/invite/accept"; }
+    public static String getRejectToInviteUrl(){ return getUserUrl() + "/invite/reject"; }
 
-    private static final String __hiddenGenerateClientKeyUrl = __hiddenUrl + "/generate.client.key";
+    public static String getNoragramUrl(){ return __protocol + "://" + __host + ":3000/noragram"; }
 
-    private static final String __userUrl  = __noragramUrl + "/user";
 
-    private static final String __SignupUrl = __userUrl + "/auth/email/signup";
-    private static final String __SigninUrl = __userUrl + "/auth/email/signin";
-    private static final String __SignoutUrl = __userUrl + "/auth/signout";
-    private static final String __helloUrl = __userUrl + "/hello";
-    private static final String __setProfileNameUrl = __userUrl + "/set/profile/name";
-    private static final String __addEmailUrl = __userUrl + "/add/email";
-    private static final String __addPhoneUrl = __userUrl + "/add/phone";
-    private static final String __inviteByEmailUrl = __userUrl + "/invite/by/email";
-    private static final String __inviteByPhoneUrl = __userUrl + "/invite/by/phone";
-    private static final String __acceptToInviteUrl = __userUrl + "/invite/accept";
-    private static final String __rejectToInviteUrl = __userUrl + "/invite/reject";
+    public static String getHiddenGenerateClientKeyUrl(){ return getHiddenUrl() + "/generate.client.key"; }
 
     public static String getHiddenGenerateClientKeyUrl(String uid, String device, String app) {
         try {
             return String.format("%s?uid=%s&device=%s&app=%s",
-                    __hiddenGenerateClientKeyUrl,
+                    getHiddenGenerateClientKeyUrl(),
                     URLEncoder.encode(uid,"UTF-8"),
                     URLEncoder.encode(device,"UTF-8"),
                     URLEncoder.encode(app,"UTF-8"));
@@ -48,12 +48,11 @@ public class Url {
         return null;
     }
 
-    public static String getNoragramUrl(){ return __noragramUrl; }
 
     public static String getSignupUrl(String email, String password) {
         try {
             return String.format("%s?email=%s&password=%s",
-                    __SignupUrl,
+                    getSigninUrl(),
                     URLEncoder.encode(email,"UTF-8"),
                     URLEncoder.encode(password,"UTF-8"));
         } catch (UnsupportedEncodingException e) {
@@ -65,7 +64,7 @@ public class Url {
     public static String getSigninUrl(String email, String password) {
         try {
             return String.format("%s?email=%s&password=%s",
-                    __SigninUrl,
+                    getSigninUrl(),
                     URLEncoder.encode(email,"UTF-8"),
                     URLEncoder.encode(password,"UTF-8"));
         } catch (UnsupportedEncodingException e) {
@@ -74,14 +73,10 @@ public class Url {
         return null;
     }
 
-    public static String getSignoutUrl() {
-        return __SignoutUrl;
-    }
-
     public static String getHelloUrl(String device, String app) {
         try {
             return String.format("%s?device=%s&app=%s",
-                    __helloUrl,
+                    getHelloUrl(),
                     URLEncoder.encode(device, "UTF-8"),
                     URLEncoder.encode(app, "UTF-8"));
         } catch (UnsupportedEncodingException e) {
@@ -89,17 +84,4 @@ public class Url {
         }
         return null;
     }
-//        return __helloUrl; }
-
-    public static String getSetProfileNameUrl(){ return __setProfileNameUrl; }
-
-
-    public static String getAddPhoneUrl(){ return __addPhoneUrl; }
-    public static String getAddEmailUrl(){ return __addEmailUrl; }
-
-    public static String getInviteByPhoneUrl(){ return __inviteByPhoneUrl; }
-    public static String getInviteByEmailUrl(){ return __inviteByEmailUrl; }
-
-    public static String getAcceptToInviteUrl(){ return __acceptToInviteUrl; }
-    public static String getRejectToInviteUrl(){ return __rejectToInviteUrl; }
 }
