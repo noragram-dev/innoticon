@@ -11,10 +11,13 @@ import java.net.URLEncoder;
 @SuppressWarnings("unused")
 public class Url {
     private static final String __protocol = "http";
+    private static String __host = "127.0.0.1";
 
-    private static final String __noragramUrl = __protocol + "://" + "127.0.0.1:3000/noragram";
+    public static void Host(String v){ __host = v; }
 
-    private static final String __hiddenUrl = __protocol + "://" + "127.0.0.1:3000/hidden";
+    private static final String __noragramUrl = __protocol + "://" + __host + ":3000/noragram";
+
+    private static final String __hiddenUrl = __protocol + "://" +  __host + ":3000/hidden";
 
     private static final String __hiddenGenerateClientKeyUrl = __hiddenUrl + "/generate.client.key";
 
