@@ -21,6 +21,11 @@ public class Accept extends innoticon.ds.Req {
         }
     }
 
+    public static String Json(String uid, innoticon.client.req.invite.Invite invite){
+        innoticon.Client client = innoticon.Client.Get();
+        return client.toJson(Gen(uid, invite));
+    }
+
     public static Accept Gen(String uid, innoticon.client.req.invite.Invite invite, String greeting) {
         innoticon.Client client = innoticon.Client.Get();
         if (invite != null){
@@ -28,6 +33,11 @@ public class Accept extends innoticon.ds.Req {
         } else {
             return null;
         }
+    }
+
+    public static String Json(String uid, innoticon.client.req.invite.Invite invite, String greeting){
+        innoticon.Client client = innoticon.Client.Get();
+        return client.toJson(Gen(uid, invite, greeting));
     }
 
     @Expose public innoticon.ds.User user = null;

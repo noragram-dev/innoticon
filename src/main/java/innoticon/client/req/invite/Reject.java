@@ -23,6 +23,16 @@ public class Reject extends innoticon.ds.Req {
         return new Reject(client.gen(), uid, invite, greeting);
     }
 
+    public static String Json(String uid, innoticon.client.req.invite.Invite invite) {
+        innoticon.Client client = innoticon.Client.Get();
+        return client.toJson(Gen(uid, invite));
+    }
+
+    public static String Json(String uid, innoticon.client.req.invite.Invite invite, String greeting) {
+        innoticon.Client client = innoticon.Client.Get();
+        return client.toJson(Gen(uid, invite, greeting));
+    }
+
     @Expose public String uid;
     @Expose public innoticon.ds.Res res;
 

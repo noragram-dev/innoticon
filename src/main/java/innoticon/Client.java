@@ -236,6 +236,19 @@ public class Client implements  Runnable,
         return this;
     }
 
+    public innoticon.ds.User profile(String name, String phone){
+        __me.name(name);
+        __me.phone(phone);
+        return __config.me(__me);
+    }
+
+    public innoticon.ds.User name(String name){
+        __me.name(name);
+        return __config.me(__me);
+    }
+
+    public <T> String toJson(T item){ return __gson.toJson(item); }
+
     public long gen(){ return __config.gen(); }
 
     @Override public innoticon.key.Local genLocalKey(){ return innoticon.key.Local.Gen(gen()); }
