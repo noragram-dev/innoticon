@@ -1,7 +1,9 @@
 package innoticon;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.google.gson.annotations.Expose;
+import novemberizing.util.Log;
 
 /**
  *
@@ -9,13 +11,15 @@ import com.google.gson.annotations.Expose;
  * @since 2017. 2. 7.
  */
 @SuppressWarnings({"DanglingJavadoc", "unused", "WeakerAccess"})
-public abstract class Client implements Runnable,
-                                        innoticon.key.Local.Gen,
-                                        innoticon.ds.Action.Key.Gen,
-                                        innoticon.ds.Action.Gen,
-                                        innoticon.ds.Res.Key.Gen,
-                                        innoticon.ds.Message.Serializer,
-                                        innoticon.ds.Message.Deserializer {
+public class Client implements  Runnable,
+                                innoticon.key.Local.Gen,
+                                innoticon.ds.Action.Key.Gen,
+                                innoticon.ds.Action.Gen,
+                                innoticon.ds.Res.Key.Gen,
+                                innoticon.ds.Message.Serializer,
+                                innoticon.ds.Message.Deserializer {
+
+    private static final String Tag = "innoticon.client>";
 
     /**
      * client config class
@@ -135,24 +139,102 @@ public abstract class Client implements Runnable,
     }
 
     protected Gson __gson;
+    public final novemberizing.rx.Observable<innoticon.Client> observable = new novemberizing.rx.Observable<>();
 
-//    @Expose protected innoticon.ds.Client.Key __key;
-    @Expose protected String __dev;
-    @Expose protected String __app;
     @Expose protected Config __config;
     @Expose protected innoticon.ds.User __me;
-    @Expose protected String __name;
-    @Expose protected String __phone;
+    @Expose protected innoticon.ds.Client __client;
 
-    public abstract innoticon.ds.Client.Key key();
+    public innoticon.ds.Client.Key key() { return __client!=null ? __client.key() : null; }
 
-    public String dev(){ return __dev; }
-    public String app(){ return __app; }
     public Config config(){ return __config; }
+
+    public innoticon.ds.Client client(){ return __client; }
+    public String dev(){ return __client!=null ? __client.device() : null ; }
+    public String app(){ return __client!=null ? __client.app() : null; }
+
     public innoticon.ds.User me(){ return __me; }
     public String name(){ return __me!=null ? __me.name() : null; }
-    public String phone(){ return __phone; }
     public String email(){ return __me!=null ? __me.name() : null; }
+    public String uid(){ return __me!=null ? __me.uid() : null; }
+    public String phone(){ return __me!=null ? __me.phone() : null; }
+
+    public innoticon.Client dev(String v){
+        if(__client!=null){
+            __client.device(v);
+            __config.client(__client);
+        } else {
+            Log.e(Tag, "__client==null");
+        }
+        return this;
+    }
+
+    public innoticon.Client app(String v){
+        if(__client!=null){
+            __client.app(v);
+            __config.client(__client);
+        } else {
+            Log.e(Tag, "__client==null");
+        }
+        return this;
+    }
+
+    public innoticon.Client me(innoticon.ds.User v){
+        __me = v;
+        __config.me(__me);
+        return this;
+    }
+
+    public innoticon.Client name(String v){
+        if(__me!=null){
+            __me.name(v);
+            __config.me(__me);
+        } else {
+            Log.w(Tag, "__me==null");
+        }
+        return this;
+    }
+
+    public innoticon.Client phone(String v){
+        if(__me!=null){
+            __me.phone(v);
+            __config.me(__me);
+        } else {
+            Log.w(Tag, "__me==null");
+        }
+        return this;
+    }
+
+    public innoticon.Client email(String v){
+        if(__me!=null){
+            __me.phone(v);
+            __config.me(__me);
+        } else {
+            Log.w(Tag, "__me==null");
+        }
+        return this;
+    }
+
+    public innoticon.Client uid(String v){
+        if(__me!=null){
+            __me.uid(v);
+            __config.me(__me);
+        } else {
+            Log.w(Tag, "__me==null");
+        }
+        return this;
+    }
+
+    public innoticon.Client client(innoticon.ds.Client v){
+        __client = v;
+        __config.client(__client);
+        return this;
+    }
+
+    public innoticon.Client pub(){
+        novemberizing.rx.Observable.Emit(observable, this);
+        return this;
+    }
 
     public long gen(){ return __config.gen(); }
 
@@ -165,6 +247,13 @@ public abstract class Client implements Runnable,
 
     @Override public <T extends innoticon.ds.Message> T deserialize(String str, Class<T> c){ return __gson.fromJson(str, c); }
 
-    public abstract void init();
+    public void init(){
+        __gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
+    }
 
+
+    @Override
+    public void run() {
+        Log.d(Tag, "dummy");
+    }
 }
