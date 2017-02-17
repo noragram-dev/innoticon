@@ -43,6 +43,7 @@ public class Client implements  Runnable,
 
         private Gson __gson;                                                    /** gson */
         private String __path;                                                  /** config path */
+        private novemberizing.ds.on.Single<String> __save;                      /** save function */
 
         @Expose private innoticon.ds.Client client;                             /** noragram client */
 
@@ -97,7 +98,13 @@ public class Client implements  Runnable,
         }
 
         /** save config */
-        public void save(){ novemberizing.util.File.Set(__path, json(__gson)); }
+        public void save(){
+            if(__save!=null) {
+                novemberizing.util.File.Set(__path, json(__gson));
+            } else {
+                __save.on(json(__gson));
+            }
+        }
 
         /**
          * set path & gson
@@ -108,6 +115,11 @@ public class Client implements  Runnable,
         public void init(String path, Gson gson){
             __path = path;
             __gson = gson;
+        }
+
+        public void init(Gson gson, novemberizing.ds.on.Single<String> save){
+            __gson = gson;
+            __save = save;
         }
 
         public Config(){
