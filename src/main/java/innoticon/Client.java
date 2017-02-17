@@ -28,18 +28,6 @@ public class Client implements  Runnable,
      * @since 2017. 2. 7.
      */
     public static class Config extends innoticon.ds.Json {
-        /**
-         * Init Config
-         *
-         * @param path | string | config path |
-         * @param gson | Gson | gson |
-         * @return | noragram.Client.Config | config |
-         */
-        public static Config Init(String path, Gson gson){
-            Config config = new Config();
-            config.init(path, gson);
-            return config;
-        }
 
         private Gson __gson;                                                    /** gson */
         private String __path;                                                  /** config path */
@@ -100,21 +88,8 @@ public class Client implements  Runnable,
         /** save config */
         public void save(){
             if(__save!=null) {
-                novemberizing.util.File.Set(__path, json(__gson));
-            } else {
                 __save.on(json(__gson));
             }
-        }
-
-        /**
-         * set path & gson
-         *
-         * @param path | string | config path |
-         * @param gson | Gson | gson |
-         */
-        public void init(String path, Gson gson){
-            __path = path;
-            __gson = gson;
         }
 
         public void init(Gson gson, novemberizing.ds.on.Single<String> save){
