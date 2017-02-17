@@ -20,7 +20,7 @@ public class Url {
     public static String getSignupUrl(){ return getUserUrl() + "/auth/email/signup"; }
     public static String getSigninUrl(){ return getUserUrl() + "/auth/email/signin"; }
     public static String getSignoutUrl(){ return getUserUrl() + "/auth/signout"; }
-    public static String getHelloUrl(){ return getUserUrl() + "hello"; }
+    public static String getHelloUrl(){ return getUserUrl() + "/hello"; }
     public static String getSetProfileNameUrl(){ return getUserUrl() + "/set/profile/name"; }
     public static String getAddEmailUrl() { return getUserUrl() + "/add/email"; }
     public static String getAddPhoneUrl() { return getUserUrl() + "/add/phone"; }
