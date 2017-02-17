@@ -16,6 +16,11 @@ public class Profile extends innoticon.ds.Req {
         return new Profile(client.gen(), name, phone);
     }
 
+    public static String Json(String name, String phone){
+        innoticon.Client client = innoticon.Client.Get();
+        return client.toJson(Gen(name, phone));
+    }
+
     @Expose public String name;
     @Expose public String phone;
 

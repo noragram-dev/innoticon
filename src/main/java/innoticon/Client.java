@@ -13,7 +13,9 @@ public abstract class Client implements Runnable,
                                         innoticon.key.Local.Gen,
                                         innoticon.ds.Action.Key.Gen,
                                         innoticon.ds.Action.Gen,
-                                        innoticon.ds.Res.Key.Gen {
+                                        innoticon.ds.Res.Key.Gen,
+                                        innoticon.ds.Message.Serializer,
+                                        innoticon.ds.Message.Deserializer {
 
     /**
      * client config class
@@ -117,6 +119,21 @@ public abstract class Client implements Runnable,
 
     public static Client Get(){ return __singleton; }
 
+    public static long Gen(){
+        Client client = Get();
+        return client.gen();
+    }
+
+    public static String Serialize(innoticon.ds.Message message){
+        Client client = Get();
+        return client.serialize(message);
+    }
+
+    public static <T extends innoticon.ds.Message> T Deserialize(String str, Class<T> c){
+        Client client = Get();
+        return client.deserialize(str, c);
+    }
+
     protected Gson __gson;
 
 //    @Expose protected innoticon.ds.Client.Key __key;
@@ -136,12 +153,29 @@ public abstract class Client implements Runnable,
     public String name(){ return __name; }
     public String phone(){ return __phone; }
 
+    public innoticon.ds.User profile(String name, String phone){
+        __me.name(name);
+        __me.phone(phone);
+        return __config.me(__me);
+    }
+
+    public innoticon.ds.User name(String name){
+        __me.name(name);
+        return __config.me(__me);
+    }
+
+    public <T> String toJson(T item){ return __gson.toJson(item); }
+
     public long gen(){ return __config.gen(); }
 
     @Override public innoticon.key.Local genLocalKey(){ return innoticon.key.Local.Gen(gen()); }
     @Override public innoticon.ds.Action.Key genActionKey() { return new innoticon.ds.Action.Key(genLocalKey()); }
     @Override public innoticon.ds.Action genAction(int type, innoticon.ds.Client.Key client, innoticon.ds.Action.Key key) { return new innoticon.ds.Action(type, client, key); }
     @Override public innoticon.ds.Res.Key genResKey(){ return new innoticon.ds.Res.Key(genLocalKey()); }
+
+    @Override public String serialize(innoticon.ds.Message message){ return __gson.toJson(message); }
+
+    @Override public <T extends innoticon.ds.Message> T deserialize(String str, Class<T> c){ return __gson.fromJson(str, c); }
 
     public abstract void init();
 

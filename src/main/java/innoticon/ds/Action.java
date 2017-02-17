@@ -26,10 +26,20 @@ public class Action extends innoticon.ds.Json {
         public static final int SETPROFILEPHONEREQ = BASE + 10;
         public static final int SETPROFILEREQ = BASE + 11;
         public static final int ENABLEAPI = BASE + 12;
-        public static final int USERBLOCK = BASE + 13;
-        public static final int USERMUTE = BASE + 14;
-        public static final int USERUNBLOCK = BASE + 15;
-        public static final int USERUNMUTE = BASE + 16;
+        public static final int USERBLOCKREQ = BASE + 13;
+        public static final int USERMUTEREQ = BASE + 14;
+        public static final int USERUNBLOCKREQ = BASE + 15;
+        public static final int USERUNMUTEREQ = BASE + 16;
+
+        public static final int DIALOG_BASE = 10000;
+        public static final int DIALOG_CREATE_REQ = DIALOG_BASE + 1;
+        public static final int DIALOG_LEAVE_REQ = DIALOG_BASE + 2;
+        public static final int DIALOG_JOIN_REQ = DIALOG_BASE + 3;
+        public static final int DIALOG_INVITE_REQ = DIALOG_BASE + 3;
+
+        public static final int ENVELOPE_BASE = 20000;
+        public static final int SEND_ENVELOPE_REQ = ENVELOPE_BASE + 1;
+
 
         private static final int SERVER = -1;
 

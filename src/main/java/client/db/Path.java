@@ -90,6 +90,7 @@ public class Path {
         if(uid==null){ return null; }
         return getUserRootPath(uid) + "/inbox";
     }
+
     public static String getUserInvitationInboxRootPath(String uid) {
         if(uid==null){ return null; }
         return getUserInboxRootPath(uid) + "/invitation";
@@ -133,7 +134,7 @@ public class Path {
 
     public static String getUserBlockPath(String uid, String user){
         if(uid==null || user==null) { return null; }
-        return getUserRootPath(uid) + "/block/" + user;
+        return getUserRootPath(uid) + "/block/" + user + "/timestamp";
     }
 
     public static String getUserMuteRootPath(String uid){
@@ -143,6 +144,21 @@ public class Path {
 
     public static String getUserMutePath(String uid, String user){
         if(uid==null || user==null) { return null; }
-        return getUserRootPath(uid) + "/mute/" + user;
+        return getUserRootPath(uid) + "/mute/" + user + "/timestamp";
+    }
+
+    public static String getUserMuteInboxPath(String uid, String user){
+        if(uid==null || user==null) { return null; }
+        return getUserRootPath(uid) + "/mute/" + user + "/inbox";
+    }
+
+    public static String getUserDialogRootPath(String uid){
+        if(uid==null){ return null; }
+        return getUserRootPath(uid) + "/dialog";
+    }
+
+    public static String getUserDialogPath(String uid, innoticon.req.Dialog.Key key){
+        if(uid==null || key==null){ return null; }
+        return getUserDialogRootPath(uid) + "/" + key.hex();
     }
 }

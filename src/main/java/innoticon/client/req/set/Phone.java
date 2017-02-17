@@ -16,6 +16,11 @@ public class Phone extends innoticon.ds.Req {
         return new Phone(client.gen(), phone);
     }
 
+    public static String Json(String phone){
+        innoticon.Client client = innoticon.Client.Get();
+        return client.toJson(Gen(phone));
+    }
+
     @Expose
     public String phone;
 

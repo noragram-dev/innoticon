@@ -16,6 +16,11 @@ public class Email extends innoticon.client.req.invite.Invite {
         return new Email(client.gen(), email);
     }
 
+    public static String Json(String email){
+        innoticon.Client client = innoticon.Client.Get();
+        return client.toJson(Gen(email));
+    }
+
     @Expose public String email;
 
 

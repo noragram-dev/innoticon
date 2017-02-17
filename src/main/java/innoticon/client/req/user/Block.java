@@ -2,7 +2,7 @@ package innoticon.client.req.user;
 
 import com.google.gson.annotations.Expose;
 
-import static innoticon.ds.Action.Type.USERBLOCK;
+import static innoticon.ds.Action.Type.USERBLOCKREQ;
 
 /**
  *
@@ -15,6 +15,11 @@ public class Block extends innoticon.ds.Req {
         return new Block(client.gen(), uid);
     }
 
+    public static String Json(String uid){
+        innoticon.Client client = innoticon.Client.Get();
+        return client.toJson(Gen(uid));
+    }
+
     @Expose public String uid;
     public String uid(){ return uid; }
 
@@ -24,7 +29,7 @@ public class Block extends innoticon.ds.Req {
         innoticon.Client client = innoticon.Client.Get();
 
         /** generate client key */
-        action = client.genAction(USERBLOCK, client.key(), innoticon.ds.Action.Key.Gen(unique));
+        action = client.genAction(USERBLOCKREQ, client.key(), innoticon.ds.Action.Key.Gen(unique));
         /** detail */
         this.uid = uid;
     }
