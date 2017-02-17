@@ -172,13 +172,24 @@ public class Client implements  Runnable,
         return this;
     }
 
-    public innoticon.Client profile(String name, String phone){
+    public innoticon.Client profile(String name, String phone, String photo){
         if(__me!=null){
             __me.name(name);
             __me.phone(phone);
+            __me.photo(photo);
             __config.me(__me);
         } else {
             Log.w(Tag, "__me==null");
+        }
+        return this;
+    }
+
+    public innoticon.Client photo(String v){
+        if(__me!=null){
+            __me.photo(v);
+            __config.me(__me);
+        } else {
+            Log.w(Tag, "__photo==null");
         }
         return this;
     }
