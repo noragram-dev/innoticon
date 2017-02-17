@@ -185,6 +185,17 @@ public class Client implements  Runnable,
         return this;
     }
 
+    public innoticon.Client profile(String name, String phone){
+        if(__me!=null){
+            __me.name(name);
+            __me.phone(phone);
+            __config.me(__me);
+        } else {
+            Log.w(Tag, "__me==null");
+        }
+        return this;
+    }
+
     public innoticon.Client name(String v){
         if(__me!=null){
             __me.name(v);
@@ -236,16 +247,7 @@ public class Client implements  Runnable,
         return this;
     }
 
-    public innoticon.ds.User profile(String name, String phone){
-        __me.name(name);
-        __me.phone(phone);
-        return __config.me(__me);
-    }
 
-    public innoticon.ds.User name(String name){
-        __me.name(name);
-        return __config.me(__me);
-    }
 
     public <T> String toJson(T item){ return __gson.toJson(item); }
 
@@ -263,7 +265,6 @@ public class Client implements  Runnable,
     public void init(){
         __gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
     }
-
 
     @Override
     public void run() {
