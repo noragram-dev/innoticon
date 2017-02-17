@@ -150,8 +150,9 @@ public abstract class Client implements Runnable,
     public String app(){ return __app; }
     public Config config(){ return __config; }
     public innoticon.ds.User me(){ return __me; }
-    public String name(){ return __name; }
+    public String name(){ return __me!=null ? __me.name() : null; }
     public String phone(){ return __phone; }
+    public String email(){ return __me!=null ? __me.name() : null; }
 
     public long gen(){ return __config.gen(); }
 
