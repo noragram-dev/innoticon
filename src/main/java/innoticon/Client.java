@@ -142,7 +142,7 @@ public class Client implements  Runnable,
 
     public innoticon.ds.User me(){ return __me; }
     public String name(){ return __me!=null ? __me.name() : null; }
-    public String email(){ return __me!=null ? __me.name() : null; }
+    public String email(){ return __me!=null ? __me.email() : null; }
     public String uid(){ return __me!=null ? __me.uid() : null; }
     public String phone(){ return __me!=null ? __me.phone() : null; }
     public String photo(){ return __me!=null ? __me.photo() : null; }
