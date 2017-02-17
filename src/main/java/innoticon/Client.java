@@ -150,6 +150,9 @@ public class Client implements  Runnable,
     public innoticon.Client dev(String v){
         if(__client!=null){
             __client.device(v);
+            if(__config==null){
+                __config = new Config();
+            }
             __config.client(__client);
         } else {
             Log.e(Tag, "__client==null");
@@ -160,6 +163,9 @@ public class Client implements  Runnable,
     public innoticon.Client app(String v){
         if(__client!=null){
             __client.app(v);
+            if(__config==null){
+                __config = new Config();
+            }
             __config.client(__client);
         } else {
             Log.e(Tag, "__client==null");
@@ -169,6 +175,9 @@ public class Client implements  Runnable,
 
     public innoticon.Client me(innoticon.ds.User v){
         __me = v;
+        if(__config==null){
+            __config = new Config();
+        }
         __config.me(__me);
         return this;
     }
@@ -178,6 +187,9 @@ public class Client implements  Runnable,
             __me.name(name);
             __me.phone(phone);
             __me.photo(photo);
+            if(__config==null){
+                __config = new Config();
+            }
             __config.me(__me);
         } else {
             Log.w(Tag, "__me==null");
@@ -188,6 +200,9 @@ public class Client implements  Runnable,
     public innoticon.Client photo(String v){
         if(__me!=null){
             __me.photo(v);
+            if(__config==null){
+                __config = new Config();
+            }
             __config.me(__me);
         } else {
             Log.w(Tag, "__photo==null");
@@ -198,6 +213,9 @@ public class Client implements  Runnable,
     public innoticon.Client name(String v){
         if(__me!=null){
             __me.name(v);
+            if(__config==null){
+                __config = new Config();
+            }
             __config.me(__me);
         } else {
             Log.w(Tag, "__me==null");
@@ -208,6 +226,9 @@ public class Client implements  Runnable,
     public innoticon.Client phone(String v){
         if(__me!=null){
             __me.phone(v);
+            if(__config==null){
+                __config = new Config();
+            }
             __config.me(__me);
         } else {
             Log.w(Tag, "__me==null");
@@ -218,6 +239,9 @@ public class Client implements  Runnable,
     public innoticon.Client email(String v){
         if(__me!=null){
             __me.phone(v);
+            if(__config==null){
+                __config = new Config();
+            }
             __config.me(__me);
         } else {
             Log.w(Tag, "__me==null");
@@ -228,6 +252,9 @@ public class Client implements  Runnable,
     public innoticon.Client uid(String v){
         if(__me!=null){
             __me.uid(v);
+            if(__config==null){
+                __config = new Config();
+            }
             __config.me(__me);
         } else {
             Log.w(Tag, "__me==null");
@@ -237,6 +264,9 @@ public class Client implements  Runnable,
 
     public innoticon.Client client(innoticon.ds.Client v){
         __client = v;
+        if(__config==null){
+            __config = new Config();
+        }
         __config.client(__client);
         return this;
     }
