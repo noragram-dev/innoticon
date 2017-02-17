@@ -145,6 +145,7 @@ public class Client implements  Runnable,
     public String email(){ return __me!=null ? __me.name() : null; }
     public String uid(){ return __me!=null ? __me.uid() : null; }
     public String phone(){ return __me!=null ? __me.phone() : null; }
+    public String photo(){ return __me!=null ? __me.photo() : null; }
 
     public innoticon.Client dev(String v){
         if(__client!=null){
