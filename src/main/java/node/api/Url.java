@@ -31,20 +31,20 @@ public class Url {
         return v;
     }
     public static String getSetProfileNameUrl(){ return getUserUrl() + "/set/profile/name"; }
-    public static String getSetProfileNameUrl(String token){ return getUserUrl() + "/set/profile/name&token=" + token; }
+    public static String getSetProfileNameUrl(String token){ return getUserUrl() + "/set/profile/name?token=" + token; }
     public static String getAddEmailUrl() { return getUserUrl() + "/add/email"; }
-    public static String getAddEmailUrl(String token) { return getUserUrl() + "/add/email&token=" + token; }
+    public static String getAddEmailUrl(String token) { return getUserUrl() + "/add/email?token=" + token; }
     public static String getAddPhoneUrl() { return getUserUrl() + "/add/phone"; }
-    public static String getAddPhoneUrl(String token) { return getUserUrl() + "/add/phone&token=" + token; }
+    public static String getAddPhoneUrl(String token) { return getUserUrl() + "/add/phone?token=" + token; }
     public static String getInviteByPhoneUrl(){ return getUserUrl() + "/invite/by/phone"; }
-    public static String getInviteByPhoneUrl(String token){ return getUserUrl() + "/invite/by/phone&token=" + token; }
+    public static String getInviteByPhoneUrl(String token){ return getUserUrl() + "/invite/by/phone?token=" + token; }
     public static String getInviteByEmailUrl(){ return getUserUrl() + "/invite/by/email";  }
-    public static String getInviteByEmailUrl(String token){ return getUserUrl() + "/invite/by/email&token=" + token;  }
+    public static String getInviteByEmailUrl(String token){ return getUserUrl() + "/invite/by/email?token=" + token;  }
 
     public static String getAcceptToInviteUrl(){ return getUserUrl() + "/invite/accept"; }
-    public static String getAcceptToInviteUrl(String token){ return getUserUrl() + "/invite/accept&token=" + token; }
+    public static String getAcceptToInviteUrl(String token){ return getUserUrl() + "/invite/accept?token=" + token; }
     public static String getRejectToInviteUrl(){ return getUserUrl() + "/invite/reject"; }
-    public static String getRejectToInviteUrl(String token){ return getUserUrl() + "/invite/reject&token=" + token; }
+    public static String getRejectToInviteUrl(String token){ return getUserUrl() + "/invite/reject?token=" + token; }
 
     public static String getNoragramUrl(){ return __protocol + "://" + __host + ":3000/noragram"; }
 
