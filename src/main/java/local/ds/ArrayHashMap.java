@@ -8,7 +8,7 @@ import java.util.ArrayList;
  * @since 2017. 2. 18.
  */
 public class ArrayHashMap<K, V> extends local.ds.Map<K, V> {
-    protected ArrayList<K> __keys;
+    protected ArrayList<K> __keys = new ArrayList<>();
 
     @Override public V set(K key, V value) {
         __map.put(key, value);
