@@ -48,6 +48,9 @@ public class Url {
 
     public static String getNoragramUrl(){ return __protocol + "://" + __host + ":3000/noragram"; }
 
+    public static String getEnvelopeReqUrl(){ return getNoragramUrl() + "/envelope/req"; }
+
+    public static String getEnvelopeReqUrl(String token){ return getEnvelopeReqUrl() + "?token=" + token; }
 
     public static String getHiddenGenerateClientKeyUrl(){ return getHiddenUrl() + "/generate.client.key"; }
 
