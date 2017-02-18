@@ -5,6 +5,10 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.annotations.Expose;
 import novemberizing.util.Log;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
+import java.net.URLEncoder;
+
 /**
  *
  * @author novemberizing, me@novemberizing.net
@@ -290,9 +294,26 @@ public class Client implements  Runnable,
     @Override public innoticon.ds.Action genAction(int type, innoticon.ds.Client.Key client, innoticon.ds.Action.Key key) { return new innoticon.ds.Action(type, client, key); }
     @Override public innoticon.ds.Res.Key genResKey(){ return new innoticon.ds.Res.Key(genLocalKey()); }
 
-    @Override public String serialize(innoticon.ds.Message message){ return __gson.toJson(message); }
+    @Override public String serialize(innoticon.ds.Message message){
+        try {
+            return URLEncoder.encode(__gson.toJson(message),"UTF-8");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+            Log.e(Tag, e.getMessage());
+        }
+        return "";
+    }
 
-    @Override public <T extends innoticon.ds.Message> T deserialize(String str, Class<T> c){ return __gson.fromJson(str, c); }
+    @Override public <T extends innoticon.ds.Message> T deserialize(String str, Class<T> c){
+        try {
+            return __gson.fromJson(URLDecoder.decode(str,"UTF-8"),c);
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+            e.printStackTrace();
+        }
+        return null;
+    }
+
 
     public void init(){
         __gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
