@@ -131,6 +131,7 @@ public class Client implements  Runnable,
     @Expose protected Config __config;
     @Expose protected innoticon.ds.User __me;
     @Expose protected innoticon.ds.Client __client;
+    @Expose protected String __token;
 
     public innoticon.ds.Client.Key key() { return __client!=null ? __client.key() : null; }
 
@@ -276,7 +277,9 @@ public class Client implements  Runnable,
         return this;
     }
 
+    public String token(){ return __token; }
 
+    public void token(String v){ __token = v; }
 
     public <T> String toJson(T item){ return __gson.toJson(item); }
 
