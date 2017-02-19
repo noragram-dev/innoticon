@@ -28,7 +28,7 @@ public class To implements innoticon.ds.Addr {
         String key = null;
         if(type!=null){
             if(user!=null && user.uid!=null){
-                key = type.name().toLowerCase() + "/" + user.uid();
+                key = type.name().toLowerCase() + "_" + user.uid();
             }
         }
         return key;
