@@ -22,13 +22,4 @@ public abstract class To implements innoticon.ds.Addr {
 
     public abstract String key();
     public abstract String id();
-
-    /**
-     *
-     * @return database path, maybe inbox...
-     */
-    @Override
-    public String path() {
-        return null;
-    }
 }

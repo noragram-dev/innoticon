@@ -1,6 +1,7 @@
 package innoticon.to;
 
 import com.google.gson.annotations.Expose;
+import innoticon.ds.From;
 
 /**
  *
@@ -8,7 +9,9 @@ import com.google.gson.annotations.Expose;
  * @since 2017. 2. 12.
  */
 public class DialogUser extends innoticon.ds.To {
-    @Expose public String uid;
+    @Expose public innoticon.ds.User profile = null;
+
+
     @Override
     public String key() {
         return null;
@@ -16,6 +19,6 @@ public class DialogUser extends innoticon.ds.To {
 
     @Override
     public String id() {
-        return uid;
+        return profile!=null ? profile.uid() : null;
     }
 }

@@ -91,6 +91,13 @@ public class Path {
         return getUserRootPath(uid) + "/inbox";
     }
 
+    public static String getUserEnvelopePath(String uid, innoticon.ds.Envelope envelope){
+        if(uid==null || envelope==null || envelope.action==null || envelope.action.key==null){
+            return null;
+        }
+        return getUserInboxRootPath(uid) + "/" + envelope.action.key.hex();
+    }
+
     public static String getUserInvitationInboxRootPath(String uid) {
         if(uid==null){ return null; }
         return getUserInboxRootPath(uid) + "/invitation";

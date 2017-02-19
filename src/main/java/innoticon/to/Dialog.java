@@ -1,5 +1,7 @@
 package innoticon.to;
 
+import innoticon.ds.From;
+
 /**
  *
  * @author novemberizing, me@novemberizing.net

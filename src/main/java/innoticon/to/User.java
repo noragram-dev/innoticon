@@ -1,6 +1,7 @@
 package innoticon.to;
 
 import com.google.gson.annotations.Expose;
+import innoticon.ds.From;
 
 /**
  *

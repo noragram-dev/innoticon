@@ -7,5 +7,5 @@ package innoticon.ds;
  */
 @SuppressWarnings("unused")
 public interface Addr {
-    String path();
+
 }
