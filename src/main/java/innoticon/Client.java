@@ -119,6 +119,11 @@ public class Client implements  Runnable,
         return client.gen();
     }
 
+    public static Gson Gson(){
+        Client client = Get();
+        return client!=null ? client.__gson : null;
+    }
+
     public static String Serialize(innoticon.ds.Message message){
         Client client = Get();
         return client.serialize(message);
