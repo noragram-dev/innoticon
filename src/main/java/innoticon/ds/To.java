@@ -36,6 +36,8 @@ public class To implements innoticon.ds.Addr {
     public innoticon.ds.User user(){ return user; }
     public void user(innoticon.ds.User v){ user = v; }
 
+    public String id(){ return user!=null ? user.uid() : null; }
+
     public To(){
 
     }
