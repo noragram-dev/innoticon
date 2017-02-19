@@ -11,6 +11,14 @@ import innoticon.ds.From;
 public class DialogUser extends innoticon.ds.To {
     @Expose public innoticon.ds.User profile = null;
 
+    public DialogUser(){
+        this.type = Type.DialogUser;
+    }
+
+    public DialogUser(innoticon.ds.User profile){
+        this.type = Type.User;
+        this.profile = profile;
+    }
 
     @Override
     public String key() {

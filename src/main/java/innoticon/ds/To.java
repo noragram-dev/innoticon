@@ -22,4 +22,6 @@ public abstract class To implements innoticon.ds.Addr {
 
     public abstract String key();
     public abstract String id();
+
+    public To(){}
 }

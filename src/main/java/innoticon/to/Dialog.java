@@ -17,4 +17,8 @@ public class Dialog extends innoticon.ds.To {
     public String id() {
         return null;
     }
+
+    public Dialog(){
+
+    }
 }
