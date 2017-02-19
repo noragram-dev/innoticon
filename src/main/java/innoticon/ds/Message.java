@@ -44,6 +44,8 @@ public interface Message {
         public Key(){}
         public Key(String name){
             this.name = name;
+            this.timestamp = System.currentTimeMillis();
+            this.unique = innoticon.Client.Gen();
         }
 
         /**
