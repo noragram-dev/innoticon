@@ -168,4 +168,17 @@ public class Path {
         if(uid==null || key==null){ return null; }
         return getUserDialogRootPath(uid) + "/" + key.hex();
     }
+
+    public static String getUserDialogFriendRootPath(String uid){
+        if(uid==null){ return null; }
+        return getUserDialogRootPath(uid) + "/friend";
+    }
+
+    public static String getUserDialogFriendRootPath(String uid, String friend, innoticon.ds.Envelope envelope){
+        String root = getUserDialogFriendRootPath(uid);
+        if(root==null || friend==null || envelope==null || envelope.action==null || envelope.action.key==null){
+            return null;
+        }
+        return root + "/" + friend + "/" + envelope.action.key.hex();
+    }
 }

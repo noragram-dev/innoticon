@@ -2,6 +2,8 @@ package innoticon.ds;
 
 import com.google.gson.annotations.Expose;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author novemberizing, me@novemberizing.net
