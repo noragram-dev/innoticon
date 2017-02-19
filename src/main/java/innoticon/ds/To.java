@@ -8,6 +8,10 @@ import com.google.gson.annotations.Expose;
  * @since 2017. 2. 12.
  */
 public class To implements innoticon.ds.Addr {
+
+    public static innoticon.ds.To Gen(innoticon.ds.Friend friend){
+        return friend!=null ? new innoticon.ds.To(friend.profile) : null;
+    }
     /**
      * maybe useless, just we use path,...
      */
@@ -40,5 +44,10 @@ public class To implements innoticon.ds.Addr {
 
     public To(){
 
+    }
+
+    public To(innoticon.ds.User user){
+        this.type = Type.User;
+        this.user = user;
     }
 }
