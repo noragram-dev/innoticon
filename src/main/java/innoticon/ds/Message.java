@@ -2,6 +2,8 @@ package innoticon.ds;
 
 import com.google.gson.annotations.Expose;
 
+import java.nio.ByteBuffer;
+
 /**
  * remove builder concept, replace serialize, deserialize, and converter
  * @author novemberizing, me@novemberizing.net
@@ -46,6 +48,45 @@ public interface Message {
             this.name = name;
             this.timestamp = System.currentTimeMillis();
             this.unique = innoticon.Client.Gen();
+        }
+
+        /**
+         * key object to bytes
+         *
+         * @return | byte[] | key's bytes, length is 16 |
+         */
+        @Override
+        public byte[] encode() {
+            if(name==null || name.length()>0){
+                return null;
+            }
+            byte[] timestamps = ByteBuffer.allocate(8).putLong(timestamp).array();
+            byte[] uniques = ByteBuffer.allocate(8).putLong(unique).array();
+            byte[] names = name.getBytes();
+            byte[] bytes = new byte[16 + names.length];
+            for(int i=0;i<8;i++){ bytes[i*2] = timestamps[8 - i -1]; }
+            for(int i=0;i<8;i++){ bytes[i*2 + 1] = uniques[i]; }
+            System.arraycopy(names,0,bytes,16,names.length);
+            return bytes;
+        }
+
+        @Override
+        public innoticon.ds.Key decode(byte[] bytes) {
+            if(bytes!=null && bytes.length>16) {
+                byte[] timestamps = new byte[8];
+                byte[] uniques = new byte[8];
+                byte[] names = new byte[bytes.length - 16];
+                for (int i = 0; i < 8; i++) {
+                    timestamps[8 - i - 1] = bytes[i * 2];
+                    uniques[i] = bytes[i * 2 + 1];
+                }
+                System.arraycopy(bytes,16,names,0,bytes.length - 16);
+                timestamp = ByteBuffer.wrap(timestamps).getLong();
+                unique = ByteBuffer.wrap(uniques).getLong();
+                name = new String(names);
+                return this;
+            }
+            return null;
         }
 
         /**
