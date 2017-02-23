@@ -28,6 +28,15 @@ public class Envelope extends innoticon.ds.Req {
         return client.toJson(envelope);
     }
 
+    public static innoticon.ds.Envelope Gen(String key, String msg){
+        innoticon.ds.Envelope envelope = null;
+        if(msg!=null){
+            envelope = Gen();
+            envelope.add(key, msg);
+        }
+        return envelope;
+    }
+
     @SafeVarargs
     public static <T extends innoticon.ds.Message> innoticon.ds.Envelope Gen(T msg, T... messages){
         innoticon.ds.Envelope envelope = Gen();
@@ -221,6 +230,13 @@ public class Envelope extends innoticon.ds.Req {
                 messages = new HashMap<>();
             }
             messages.put(message.key().hex(), innoticon.Client.Serialize(message));
+        }
+        return this;
+    }
+
+    public Envelope add(String key, String msg){
+        if(key!=null && key.length()>0 && msg!=null && msg.length()>0){
+            messages.put(key, msg);
         }
         return this;
     }
