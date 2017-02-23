@@ -91,6 +91,13 @@ public class Path {
         return getUserRootPath(uid) + "/inbox";
     }
 
+    public static String getUserEnvelopePath(String uid, innoticon.ds.Envelope envelope){
+        if(uid==null || envelope==null || envelope.action==null || envelope.action.key==null){
+            return null;
+        }
+        return getUserInboxRootPath(uid) + "/" + envelope.action.key.hex();
+    }
+
     public static String getUserInvitationInboxRootPath(String uid) {
         if(uid==null){ return null; }
         return getUserInboxRootPath(uid) + "/invitation";
@@ -160,5 +167,18 @@ public class Path {
     public static String getUserDialogPath(String uid, innoticon.req.Dialog.Key key){
         if(uid==null || key==null){ return null; }
         return getUserDialogRootPath(uid) + "/" + key.hex();
+    }
+
+    public static String getUserDialogFriendRootPath(String uid){
+        if(uid==null){ return null; }
+        return getUserDialogRootPath(uid) + "/friend";
+    }
+
+    public static String getUserDialogFriendRootPath(String uid, String friend, innoticon.ds.Envelope envelope){
+        String root = getUserDialogFriendRootPath(uid);
+        if(root==null || friend==null || envelope==null || envelope.action==null || envelope.action.key==null){
+            return null;
+        }
+        return root + "/" + friend + "/" + envelope.action.key.hex();
     }
 }

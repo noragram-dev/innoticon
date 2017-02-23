@@ -25,6 +25,4 @@ public class From implements innoticon.ds.Addr {
         this.user = client.me();
     }
 
-    @Override
-    public String path() { return client.db.Path.getUserRootPath(user!=null ? user.uid() : null); }
 }
