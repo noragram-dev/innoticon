@@ -30,7 +30,7 @@ public class Innoticon extends innoticon.msg.Abstract {
 
 
     @Expose public HashMap<Integer, String> timeline = null;
-    @Expose public int current = 0;
+    @Expose public int current = -1;
 
     public void current(int v){ current = v; }
     public int current(){ return current; }
