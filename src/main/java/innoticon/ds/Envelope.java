@@ -145,6 +145,23 @@ public class Envelope extends innoticon.ds.Req {
         return envelope;
     }
 
+    public innoticon.ds.Envelope one(innoticon.ds.Message msg){
+        innoticon.ds.Envelope envelope = null;
+        if(msg!=null){
+            /**
+             * no deep copy just
+             * @todo check this logic
+             */
+            envelope = new innoticon.ds.Envelope(this);
+            envelope.from = this.from;
+            envelope.destinations = this.destinations;
+            envelope.add(msg);
+        } else {
+            Log.e("envelope", "key==null && key.length()==0 && value==null && value.length()==0");
+        }
+        return envelope;
+    }
+
     public innoticon.ds.From from(){ return from; }
     public HashMap<String,innoticon.ds.To> destinations(){ return destinations; }
     public HashMap<String, String> messages(){ return messages; }
