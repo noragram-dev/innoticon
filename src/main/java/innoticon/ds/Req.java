@@ -24,4 +24,8 @@ public class Req extends innoticon.ds.Json {
         innoticon.Client client = innoticon.Client.Get();
         this.action = client.genAction(type, client.key(), innoticon.ds.Action.Key.Gen(unique));
     }
+
+    public Req(innoticon.ds.Action action){
+        this.action = action;
+    }
 }

@@ -13,7 +13,7 @@ import static innoticon.ds.Action.Type.SEND_ENVELOPE_REQ;
  * @author novemberizing, me@novemberizing.net
  * @since 2017. 2. 12.
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
+@SuppressWarnings({"WeakerAccess", "unused", "DanglingJavadoc"})
 public class Envelope extends innoticon.ds.Req {
     /**
      * if you call this, automatically set action object and from field set client's {@link innoticon.ds.User}
@@ -28,14 +28,14 @@ public class Envelope extends innoticon.ds.Req {
         return client.toJson(envelope);
     }
 
-    public static innoticon.ds.Envelope Gen(String key, String msg){
-        innoticon.ds.Envelope envelope = null;
-        if(msg!=null){
-            envelope = Gen();
-            envelope.add(key, msg);
-        }
-        return envelope;
-    }
+//    public static innoticon.ds.Envelope Gen(String key, String msg){
+//        innoticon.ds.Envelope envelope = null;
+//        if(msg!=null){
+//            envelope = Gen();
+//            envelope.add(key, msg);
+//        }
+//        return envelope;
+//    }
 
     @SafeVarargs
     public static <T extends innoticon.ds.Message> innoticon.ds.Envelope Gen(T msg, T... messages){
@@ -127,6 +127,23 @@ public class Envelope extends innoticon.ds.Req {
     @Expose public HashMap<String,innoticon.ds.To> destinations = null;
     /** because firebase/ firebase not support list */
     @Expose public HashMap<String, String> messages = null;
+
+    public innoticon.ds.Envelope child(String key, String value){
+        innoticon.ds.Envelope envelope = null;
+        if(key!=null && key.length()>0 && value!=null && value.length()>0){
+            /**
+             * no deep copy just
+             * @todo check this logic
+             */
+            envelope = new innoticon.ds.Envelope(this);
+            envelope.from = this.from;
+            envelope.destinations = this.destinations;
+            messages.put(key, value);
+        } else {
+            Log.e("envelope", "key==null && key.length()==0 && value==null && value.length()==0");
+        }
+        return envelope;
+    }
 
     public innoticon.ds.From from(){ return from; }
     public HashMap<String,innoticon.ds.To> destinations(){ return destinations; }
@@ -260,6 +277,10 @@ public class Envelope extends innoticon.ds.Req {
     }
 
     public Envelope(){}
+
+    public Envelope(Envelope envelope){
+        super(envelope!=null ? envelope.action : null);
+    }
 
     public Envelope(long unique){
         super(unique, SEND_ENVELOPE_REQ);
