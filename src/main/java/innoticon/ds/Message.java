@@ -57,7 +57,7 @@ public interface Message {
          */
         @Override
         public byte[] encode() {
-            if(name==null || name.length()>0){
+            if(name==null || name.length()==0){
                 return null;
             }
             byte[] timestamps = ByteBuffer.allocate(8).putLong(timestamp).array();
