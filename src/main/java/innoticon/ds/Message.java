@@ -62,7 +62,7 @@ public interface Message {
             }
             byte[] timestamps = ByteBuffer.allocate(8).putLong(timestamp).array();
             byte[] uniques = ByteBuffer.allocate(8).putLong(unique).array();
-            byte[] names = name.getBytes();
+            byte[] names = name.replaceAll("[.]","_").getBytes();
             byte[] bytes = new byte[16 + names.length];
             for(int i=0;i<8;i++){ bytes[i*2] = timestamps[8 - i -1]; }
             for(int i=0;i<8;i++){ bytes[i*2 + 1] = uniques[i]; }
@@ -83,7 +83,7 @@ public interface Message {
                 System.arraycopy(bytes,16,names,0,bytes.length - 16);
                 timestamp = ByteBuffer.wrap(timestamps).getLong();
                 unique = ByteBuffer.wrap(uniques).getLong();
-                name = new String(names);
+                name = new String(names).replaceAll("[_]",".");
                 return this;
             }
             return null;
