@@ -319,7 +319,6 @@ public class Client implements  Runnable,
         return null;
     }
 
-
     public void init(){
         __gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
     }
