@@ -128,7 +128,7 @@ public class Envelope extends innoticon.ds.Req {
     /** because firebase/ firebase not support list */
     @Expose public HashMap<String, String> messages = null;
 
-    public innoticon.ds.Envelope child(String key, String value){
+    public innoticon.ds.Envelope one(String key, String value){
         innoticon.ds.Envelope envelope = null;
         if(key!=null && key.length()>0 && value!=null && value.length()>0){
             /**
