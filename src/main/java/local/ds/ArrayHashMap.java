@@ -11,8 +11,12 @@ public class ArrayHashMap<K, V> extends local.ds.Map<K, V> {
     protected ArrayList<K> __keys = new ArrayList<>();
 
     @Override public V set(K key, V value) {
-        __map.put(key, value);
-        __keys.add(key);
+        if(__map.get(key)==null) {
+            __map.put(key, value);
+            __keys.add(key);
+        } else {
+            __map.put(key, value);
+        }
         return value;
     }
     @Override public V del(K key) {
