@@ -16,3 +16,4 @@ public class Friend extends innoticon.ds.Json {
 
     public Friend(){}
 }
+
