@@ -182,6 +182,14 @@ public class Path {
         return root + "/" + friend + "/" + envelope.action.key.hex();
     }
 
+    public static String getUserDialogFriendSummaryRootPath(String uid){
+        String root = getUserDialogFriendRootPath(uid);
+        if(root==null){
+            return null;
+        }
+        return root + "/summary";
+    }
+
     public static String getUserDialogFriendSummaryPath(String uid, String friend){
         String root = getUserDialogFriendRootPath(uid);
         if(root==null || friend==null){
