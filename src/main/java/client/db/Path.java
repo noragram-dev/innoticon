@@ -181,4 +181,12 @@ public class Path {
         }
         return root + "/" + friend + "/" + envelope.action.key.hex();
     }
+
+    public static String getUserDialogSummaryPath(String uid, String friend, innoticon.ds.Envelope envelope){
+        String root = getUserDialogFriendRootPath(uid);
+        if(root==null || friend==null || envelope==null || envelope.action==null || envelope.action.key==null){
+            return null;
+        }
+        return root + "/" + friend + "/summary/" + envelope.action.key.hex();
+    }
 }
