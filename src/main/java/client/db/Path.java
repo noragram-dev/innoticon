@@ -187,6 +187,6 @@ public class Path {
         if(root==null || friend==null){
             return null;
         }
-        return root + "/" + friend + "/summary";
+        return root + "/summary/" + friend;
     }
 }
