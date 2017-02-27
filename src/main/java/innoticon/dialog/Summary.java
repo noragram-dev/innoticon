@@ -25,12 +25,6 @@ public class Summary {
 
     public Summary(){}
 
-    public Summary(innoticon.ds.Envelope envelope, innoticon.ds.User from){
-        this.envelope = envelope;
-        this.timestamp = System.currentTimeMillis();
-        this.from = from;
-    }
-
     public Summary(innoticon.ds.Envelope envelope){
         this.envelope = envelope;
         this.timestamp = System.currentTimeMillis();
