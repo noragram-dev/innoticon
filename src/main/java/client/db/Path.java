@@ -74,6 +74,12 @@ public class Path {
         if(uid==null){ return null; }
         return getUserProfileMainPath(uid) + "/phone";
     }
+    public static String getUserProfileMainDescriptionPath(String uid) {
+        if(uid==null){ return null; }
+        return getUserProfileMainPath(uid) + "/description";
+    }
+
+
     public static String getUserProfileMainNamePath(String uid) {
         if(uid==null){ return null; }
         return getUserProfileMainPath(uid) + "/name";
