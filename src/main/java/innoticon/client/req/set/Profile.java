@@ -11,23 +11,26 @@ import static innoticon.ds.Action.Type.SETPROFILEREQ;
  */
 @SuppressWarnings({"DanglingJavadoc", "WeakerAccess", "unused"})
 public class Profile extends innoticon.ds.Req {
-    public static Profile Gen(String name, String phone){
+    public static Profile Gen(String name, String phone, String description){
         innoticon.Client client = innoticon.Client.Get();
-        return new Profile(client.gen(), name, phone);
+        return new Profile(client.gen(), name, phone, description);
     }
 
-    public static String Json(String name, String phone){
+    public static String Json(String name, String phone, String description){
         innoticon.Client client = innoticon.Client.Get();
-        return client.toJson(Gen(name, phone));
+        return client.toJson(Gen(name, phone, description));
     }
 
     @Expose public String name;
     @Expose public String phone;
+    @Expose public String description;
 
     public String name(){ return name; }
     public String phone(){ return phone; }
+    public String description(){ return description; }
 
-    public Profile(long unique, String name, String phone){
+
+    public Profile(long unique, String name, String phone, String description){
         innoticon.Client client = innoticon.Client.Get();
         /** set action */
         action = client.genAction(SETPROFILEREQ, client.key(), innoticon.ds.Action.Key.Gen(unique));
@@ -35,5 +38,6 @@ public class Profile extends innoticon.ds.Req {
         /** detail */
         this.name = name;
         this.phone = phone;
+        this.description = description;
     }
 }
