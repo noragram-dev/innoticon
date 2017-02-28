@@ -248,7 +248,7 @@ public class Client implements  Runnable,
 
     public innoticon.Client email(String v){
         if(__me!=null){
-            __me.phone(v);
+            __me.email(v);
             if(__config==null){
                 __config = new Config();
             }

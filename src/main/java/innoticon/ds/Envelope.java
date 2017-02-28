@@ -28,15 +28,6 @@ public class Envelope extends innoticon.ds.Req {
         return client.toJson(envelope);
     }
 
-//    public static innoticon.ds.Envelope Gen(String key, String msg){
-//        innoticon.ds.Envelope envelope = null;
-//        if(msg!=null){
-//            envelope = Gen();
-//            envelope.add(key, msg);
-//        }
-//        return envelope;
-//    }
-
     @SafeVarargs
     public static <T extends innoticon.ds.Message> innoticon.ds.Envelope Gen(T msg, T... messages){
         innoticon.ds.Envelope envelope = Gen();
