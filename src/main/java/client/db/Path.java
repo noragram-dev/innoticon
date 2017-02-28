@@ -70,6 +70,10 @@ public class Path {
         if(uid==null){ return null; }
         return getUserProfileMainPath(uid) + "/email";
     }
+    public static String getUserProfileMainUidPath(String uid) {
+        if(uid==null){ return null; }
+        return getUserProfileMainPath(uid) + "/uid";
+    }
     public static String getUserProfileMainPhonePath(String uid) {
         if(uid==null){ return null; }
         return getUserProfileMainPath(uid) + "/phone";
@@ -78,7 +82,10 @@ public class Path {
         if(uid==null){ return null; }
         return getUserProfileMainPath(uid) + "/description";
     }
-
+    public static String getUserProfileMainPhotoPath(String uid) {
+        if(uid==null){ return null; }
+        return getUserProfileMainPath(uid) + "/photo";
+    }
 
     public static String getUserProfileMainNamePath(String uid) {
         if(uid==null){ return null; }
