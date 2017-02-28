@@ -43,17 +43,25 @@ public class Client implements  Runnable,
         @Expose private innoticon.ds.User me;                                   /** me */
         @Expose private String name;                                            /** name */
         @Expose private String phone;                                           /** phone */
+        @Expose private String description;                                     /** description */
 
         public long unique(){ return unique; }                                  /** get unique key */
         public innoticon.ds.User me(){ return me; }                             /** get me */
         public innoticon.ds.Client client(){ return client; }                   /** get client */
         public String name(){ return name; }
         public String phone(){ return phone; }
+        public String description(){ return description; }
 
         public String name(String v){
             name = v;
             save();
             return this.name;
+        }
+
+        public String description(String v){
+            this.description = v;
+            save();
+            return this.description;
         }
 
         public String phone(String v){
@@ -156,6 +164,7 @@ public class Client implements  Runnable,
     public String uid(){ return __me!=null ? __me.uid() : null; }
     public String phone(){ return __me!=null ? __me.phone() : null; }
     public String photo(){ return __me!=null ? __me.photo() : null; }
+    public String description(){ return __config!=null ? __config.description() : ""; }
 
     public innoticon.Client dev(String v){
         if(__client!=null){
@@ -230,6 +239,14 @@ public class Client implements  Runnable,
         } else {
             Log.w(Tag, "__me==null");
         }
+        return this;
+    }
+
+    public innoticon.Client description(String v){
+        if(__config==null){
+            __config = new Config();
+        }
+        __config.description(v);
         return this;
     }
 
