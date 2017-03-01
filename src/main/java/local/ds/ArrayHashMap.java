@@ -23,7 +23,8 @@ public class ArrayHashMap<K, V> extends local.ds.Map<K, V> {
     }
 
     @SuppressWarnings("Java8ListSort")
-    @Override public V set(K key, V value) {
+    @Override
+    public V set(K key, V value) {
         if(__map.get(key)==null) {
             __map.put(key, value);
             __keys.add(key);
@@ -36,7 +37,8 @@ public class ArrayHashMap<K, V> extends local.ds.Map<K, V> {
         return value;
     }
     @SuppressWarnings("Java8ListSort")
-    @Override public V del(K key) {
+    @Override
+    public V del(K key) {
         __keys.remove(key);
         if(__comparator!=null) {
             Collections.sort(__keys, __comparator);
