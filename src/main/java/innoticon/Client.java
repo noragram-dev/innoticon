@@ -164,7 +164,7 @@ public class Client implements  Runnable,
     public String uid(){ return __me!=null ? __me.uid() : null; }
     public String phone(){ return __me!=null ? __me.phone() : null; }
     public String photo(){ return __me!=null ? __me.photo() : null; }
-    public String description(){ return __config!=null ? __config.description() : ""; }
+    public String description(){ return __me!=null ? __me.description() : ""; }
 
     public innoticon.Client dev(String v){
         if(__client!=null){
@@ -243,10 +243,15 @@ public class Client implements  Runnable,
     }
 
     public innoticon.Client description(String v){
-        if(__config==null){
-            __config = new Config();
+        if(__me!=null){
+            __me.description(v);
+            if(__config==null){
+                __config = new Config();
+            }
+            __config.me(__me);
+        } else {
+            Log.e(Tag, "__me==null");
         }
-        __config.description(v);
         return this;
     }
 

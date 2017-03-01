@@ -12,5 +12,6 @@ public abstract class Invite extends innoticon.ds.Req {
 
     @Expose public innoticon.ds.User from;
 
+
     public innoticon.ds.User from(){ return from; }
 }
