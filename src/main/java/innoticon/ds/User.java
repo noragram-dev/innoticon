@@ -31,5 +31,6 @@ public class User extends messenger.ds.User {
     public User(innoticon.ds.User u){
         super(u.email, u.name, u.phone, u.photo);
         this.uid = u.uid;
+        this.description = u.description;
     }
 }
