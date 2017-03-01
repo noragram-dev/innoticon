@@ -10,9 +10,13 @@ import com.google.gson.annotations.Expose;
 @SuppressWarnings({"DanglingJavadoc", "WeakerAccess", "unused"})
 public class User extends messenger.ds.User {
     @Expose public String uid;                  /** user id issued by firebase */
+    @Expose public String description;          /** description */
 
     public String uid(){ return uid; }          /** get uid */
     public void uid(String v){ uid = v; }       /** set uid */
+
+    public String description(){ return description; }
+    public void description(String v){ description = v; }
 
     public User(){
         super();
