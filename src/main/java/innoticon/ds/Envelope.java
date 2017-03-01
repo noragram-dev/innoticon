@@ -149,6 +149,9 @@ public class Envelope extends innoticon.ds.Req {
             envelope = new innoticon.ds.Envelope(this);
             envelope.from = this.from;
             envelope.destinations = this.destinations;
+            if(envelope.messages==null){
+                envelope.messages = new HashMap<>();
+            }
             envelope.messages.put(key, value);
         } else {
             Log.e("envelope", "key==null && key.length()==0 && value==null && value.length()==0");
