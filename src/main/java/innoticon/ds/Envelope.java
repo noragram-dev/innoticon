@@ -146,6 +146,11 @@ public class Envelope extends innoticon.ds.Req {
     /** because firebase/ firebase not support list */
     @Expose public HashMap<String, String> messages = null;
     @Expose public HashMap<String, innoticon.ds.Message.Res> responses;
+    @Expose public innoticon.ds.Envelope.Res res = null;
+
+    public void res(innoticon.ds.Envelope.Res res){
+        this.res = res;
+    }
 
     public void res(String key, innoticon.ds.Message.Res res){
         if(key!=null) {
