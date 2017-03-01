@@ -112,6 +112,33 @@ public class Envelope extends innoticon.ds.Req {
         return envelope;
     }
 
+    public static class Res {
+        public static class Code {
+            public static final int FAIL_TO_SEND = 1;
+        }
+        public static innoticon.ds.Envelope.Res Gen(int code,String str){ return new Res(code,str); }
+        @Expose public int code;
+        @Expose public String str;
+        @Expose public long timestamp;
+
+        public int code(){ return code; }
+        public void code(int v){ code = v; }
+
+        public String str(){ return str; }
+        public void str(String v){ str = v; }
+
+        public long timestamp(){ return timestamp; }
+        public void timestamp(long v){ timestamp = v; }
+
+        public Res(){}
+
+        public Res(int code,String str){
+            this.code = code;
+            this.str = str;
+            this.timestamp = System.currentTimeMillis();
+        }
+    }
+
     /** from's information */
     @Expose public innoticon.ds.From from = null;
     /** because firebase/ firebase not support list */
