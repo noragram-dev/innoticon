@@ -187,9 +187,9 @@ public class Path {
         return getUserDialogRootPath(uid) + "/friend";
     }
 
-    public static String getUserDialogFriendPath(String uid,innoticon.ds.Envelope envelope, String key){
+    public static String getUserDialogFriendPath(String uid, String destination,innoticon.ds.Envelope envelope, String key){
         if(uid==null || envelope.action==null || envelope.action.uid()==null){ return null; }
-        return getUserDialogRootPath(uid) + "/friend/" + envelope.action.uid() + "/" + envelope.action.key.hex() + "/" + key;
+        return getUserDialogRootPath(uid) + "/friend/" + destination + "/" + envelope.action.key.hex() + "/" + key;
     }
 
     public static String getUserDialogFriendRootPath(String uid, String friend, innoticon.ds.Envelope envelope){
