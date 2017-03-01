@@ -13,9 +13,16 @@ import java.nio.ByteBuffer;
 public interface Message {
 
     class Res {
-        public static innoticon.ds.Message.Res Gen(String str){ return new Res(str); }
+        public static class Code {
+            public static final int FAIL_TO_SEND = 1;
+        }
+        public static innoticon.ds.Message.Res Gen(int code,String str){ return new Res(code,str); }
+        @Expose public int code;
         @Expose public String str;
         @Expose public long timestamp;
+
+        public int code(){ return code; }
+        public void code(int v){ code = v; }
 
         public String str(){ return str; }
         public void str(String v){ str = v; }
@@ -25,7 +32,8 @@ public interface Message {
 
         public Res(){}
 
-        public Res(String str){
+        public Res(int code,String str){
+            this.code = code;
             this.str = str;
             this.timestamp = System.currentTimeMillis();
         }
