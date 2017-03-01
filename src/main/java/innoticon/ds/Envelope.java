@@ -118,6 +118,26 @@ public class Envelope extends innoticon.ds.Req {
     @Expose public HashMap<String,innoticon.ds.To> destinations = null;
     /** because firebase/ firebase not support list */
     @Expose public HashMap<String, String> messages = null;
+    @Expose public HashMap<String, innoticon.ds.Message.Res> responses;
+
+    public void res(String key, innoticon.ds.Message.Res res){
+        if(key!=null) {
+            if (messages != null) {
+                if (messages.get(key)!=null){
+                    if(responses==null){
+                        responses = new HashMap<>();
+                    }
+                    responses.put(key, res);
+                } else {
+                    Log.e("response>", "messages.get(key)==null");
+                }
+            } else {
+                Log.e("response>", "messages==null");
+            }
+        } else {
+            Log.e("response>", "key==null");
+        }
+    }
 
     public innoticon.ds.Envelope one(String key, String value){
         innoticon.ds.Envelope envelope = null;

@@ -9,8 +9,28 @@ import java.nio.ByteBuffer;
  * @author novemberizing, me@novemberizing.net
  * @since 2017. 2. 12.
  */
-@SuppressWarnings({"DanglingJavadoc", "unchecked", "unused"})
+@SuppressWarnings({"DanglingJavadoc", "unchecked", "unused", "WeakerAccess"})
 public interface Message {
+
+    class Res {
+        public static innoticon.ds.Message.Res Gen(String str){ return new Res(str); }
+        @Expose public String str;
+        @Expose public long timestamp;
+
+        public String str(){ return str; }
+        public void str(String v){ str = v; }
+
+        public long timestamp(){ return timestamp; }
+        public void timestamp(long v){ timestamp = v; }
+
+        public Res(){}
+
+        public Res(String str){
+            this.str = str;
+            this.timestamp = System.currentTimeMillis();
+        }
+    }
+
     /**
      * message converer interface,
      * If this is implemented at CommandLineInterface, <T extends Message, String> convert(T message, Class<String> c)
