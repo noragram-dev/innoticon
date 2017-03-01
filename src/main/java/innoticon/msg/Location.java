@@ -33,5 +33,7 @@ public class Location extends innoticon.msg.Text {
         this.key = new innoticon.ds.Message.Key(getClass().getName());
         this.str = str;
         this.image = image;
+        this.latitude = latitude;
+        this.longitude = longitude;
     }
 }
