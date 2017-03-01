@@ -14,11 +14,8 @@ public class Location extends innoticon.msg.Text {
         return new innoticon.msg.Location(str, image);
     }
 
-    @Expose public String str = null;
     @Expose public String image = null;
 
-    public String str(){ return str; }
-    public void str(String v){ this.str = v; }
     public String image(){ return image; }
     public void image(String v){ image = v; }
 
