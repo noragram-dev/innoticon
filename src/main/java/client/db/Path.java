@@ -113,7 +113,7 @@ public class Path {
 
     public static String getUserInvitationInboxRootPath(String uid) {
         if(uid==null){ return null; }
-        return getUserInboxRootPath(uid) + "/invitation";
+        return getUserRootPath(uid) + "/invitation";
     }
 
     public static String getUserInvitationPath(String uid, String friend){
