@@ -1,6 +1,8 @@
 package local.ds;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 /**
  *
@@ -9,11 +11,23 @@ import java.util.ArrayList;
  */
 public class ArrayHashMap<K, V> extends local.ds.Map<K, V> {
     protected ArrayList<K> __keys = new ArrayList<>();
+    protected final Comparator<K> __comparator;
+
+    public ArrayHashMap(){
+        __comparator = null;
+    }
+
+    public ArrayHashMap(Comparator<K> comparator){
+        __comparator = comparator;
+    }
 
     @Override public V set(K key, V value) {
         if(__map.get(key)==null) {
             __map.put(key, value);
             __keys.add(key);
+            if(__comparator!=null) {
+                __keys.sort(__comparator);
+            }
         } else {
             __map.put(key, value);
         }
@@ -21,6 +35,9 @@ public class ArrayHashMap<K, V> extends local.ds.Map<K, V> {
     }
     @Override public V del(K key) {
         __keys.remove(key);
+        if(__comparator!=null) {
+            __keys.sort(__comparator);
+        }
         return __map.remove(key);
     }
 
