@@ -215,4 +215,23 @@ public class Path {
         }
         return root + "/summary/" + friend;
     }
+
+    public static String getUserThirdRootPath(String uid){
+        String root = getUserRootPath(uid);
+        if(root==null){ return null; }
+        return root + "/third";
+    }
+
+    public static String getTelegramRootPath(String uid){
+        String root = getUserThirdRootPath(uid);
+        if(root==null){ return null; }
+        return root + "/telegram";
+    }
+
+    public static String getTelegramFriendRootPath(String uid){
+        String root = getTelegramRootPath(uid);
+        if(root==null){ return null; }
+        return root + "/friend";
+    }
+
 }
