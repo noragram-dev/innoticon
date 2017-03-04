@@ -122,6 +122,11 @@ public class Client implements  Runnable,
 
     public static Client Get(){ return __singleton; }
 
+    public static String Json(Object o){
+        Client client = Get();
+        return client!=null && client.__gson!=null ? client.__gson.toJson(o) : null;
+    }
+
     public static long Gen(){
         Client client = Get();
         return client.gen();

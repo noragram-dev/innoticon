@@ -40,6 +40,9 @@ public class Action extends innoticon.ds.Json {
         public static final int ENVELOPE_BASE = 20000;
         public static final int SEND_ENVELOPE_REQ = ENVELOPE_BASE + 1;
 
+        public static final int TELEGRAM_BASE = 30000;
+        public static final int TELEGRAM_USER_ADD_REQ = TELEGRAM_BASE + 1;
+
 
         private static final int SERVER = -1;
 
