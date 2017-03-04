@@ -8,7 +8,7 @@ import java.net.URLEncoder;
  * @author novemberizing, me@novemberizing.net
  * @since 2017. 2. 5.
  */
-@SuppressWarnings("unused")
+@SuppressWarnings({"unused", "WeakerAccess"})
 public class Url {
     private static String __protocol = "http";
     private static String __host = "127.0.0.1";
@@ -21,6 +21,7 @@ public class Url {
     public static String getSigninUrl(){ return getUserUrl() + "/auth/email/signin"; }
     public static String getSignoutUrl(){ return getUserUrl() + "/auth/signout"; }
     public static String getHelloUrl(){ return getUserUrl() + "/hello"; }
+    public static String getTelegramUrl(){ return getNoragramUrl() + "/telegram"; }
 
     public static String getTokenParam(){
         String v = "";
@@ -45,6 +46,9 @@ public class Url {
     public static String getAcceptToInviteUrl(String token){ return getUserUrl() + "/invite/accept?token=" + token; }
     public static String getRejectToInviteUrl(){ return getUserUrl() + "/invite/reject"; }
     public static String getRejectToInviteUrl(String token){ return getUserUrl() + "/invite/reject?token=" + token; }
+
+    public static String getTelegramContactUrl(){ return getTelegramUrl() + "/contact"; }
+    public static String getTelegramContactAddUrl(){ return getTelegramContactUrl() + "/add"; }
 
     public static String getNoragramUrl(){ return __protocol + "://" + __host + ":3000/noragram"; }
 
