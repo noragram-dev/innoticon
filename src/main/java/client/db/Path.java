@@ -234,7 +234,7 @@ public class Path {
         return root + "/friend";
     }
 
-    public static String getTelegramFriendRootPath(String uid, long access){
+    public static String getTelegramFriendPath(String uid, long access){
         String root = getTelegramFriendRootPath(uid);
         if(root==null){ return null; }
         return root + "/" + Long.toString(access);
