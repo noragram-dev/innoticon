@@ -16,7 +16,7 @@ public class Add extends innoticon.ds.Req {
 
     public static Add Gen(telegram.ds.User user){ return new Add(user); }
 
-    @Expose public telegram.ds.User user;
+    @Expose public telegram.ds.User telegram;
 
     public Add(){}
 
@@ -26,6 +26,6 @@ public class Add extends innoticon.ds.Req {
         /** generate client key */
         action = client.genAction(TELEGRAM_USER_ADD_REQ, client.key(), innoticon.ds.Action.Key.Gen(client.gen()));
         /** detail */
-        this.user = user;
+        this.telegram = user;
     }
 }
