@@ -87,6 +87,11 @@ public class Path {
         return getUserProfileMainPath(uid) + "/photo";
     }
 
+    public static String getUserProfileMainTelegramPath(String uid) {
+        if(uid==null){ return null; }
+        return getUserProfileMainPath(uid) + "/telegram";
+    }
+
     public static String getUserProfileMainNamePath(String uid) {
         if(uid==null){ return null; }
         return getUserProfileMainPath(uid) + "/name";
