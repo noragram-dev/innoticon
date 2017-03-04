@@ -118,4 +118,22 @@ public class Url {
         }
         return null;
     }
+
+    public static String getHelloUrl(String device, String app, int telegram) {
+        try {
+            String v = "";
+            innoticon.Client client = innoticon.Client.Get();
+            if(client!=null && client.token()!=null){
+                v = "&token=" + client.token();
+            }
+            return String.format("%s?device=%s&app=%s&telegram=%d",
+                    getHelloUrl(),
+                    URLEncoder.encode(device, "UTF-8"),
+                    URLEncoder.encode(app, "UTF-8"),
+                    telegram) + v;
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 }
