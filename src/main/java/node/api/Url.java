@@ -47,8 +47,9 @@ public class Url {
     public static String getRejectToInviteUrl(){ return getUserUrl() + "/invite/reject"; }
     public static String getRejectToInviteUrl(String token){ return getUserUrl() + "/invite/reject?token=" + token; }
 
-    public static String getTelegramContactUrl(){ return getTelegramUrl() + "/contact"; }
-    public static String getTelegramContactAddUrl(){ return getTelegramContactUrl() + "/add"; }
+    public static String getTelegramUserUrl(){ return getTelegramUrl() + "/contact"; }
+    public static String getTelegramUserAddUrl(){ return getTelegramUserUrl() + "/add"; }
+    public static String getTelegramUserAddUrl(String token){ return getTelegramUserUrl() + "/add?token=" + token; }
 
     public static String getNoragramUrl(){ return __protocol + "://" + __host + ":3000/noragram"; }
 
