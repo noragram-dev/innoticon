@@ -11,26 +11,27 @@ import static innoticon.ds.Action.Type.SETPROFILEREQ;
  */
 @SuppressWarnings({"DanglingJavadoc", "WeakerAccess", "unused"})
 public class Profile extends innoticon.ds.Req {
-    public static Profile Gen(String name, String phone, String description){
+    public static Profile Gen(String name, String phone, String description, Long telegram){
         innoticon.Client client = innoticon.Client.Get();
-        return new Profile(client.gen(), name, phone, description);
+        return new Profile(client.gen(), name, phone, description, telegram);
     }
 
-    public static String Json(String name, String phone, String description){
+    public static String Json(String name, String phone, String description, Long telegram){
         innoticon.Client client = innoticon.Client.Get();
-        return client.toJson(Gen(name, phone, description));
+        return client.toJson(Gen(name, phone, description, telegram));
     }
 
     @Expose public String name;
     @Expose public String phone;
     @Expose public String description;
+    @Expose public Long telegram;
 
     public String name(){ return name; }
     public String phone(){ return phone; }
     public String description(){ return description; }
+    public Long telegram(){ return telegram; }
 
-
-    public Profile(long unique, String name, String phone, String description){
+    public Profile(long unique, String name, String phone, String description,Long telegram){
         innoticon.Client client = innoticon.Client.Get();
         /** set action */
         action = client.genAction(SETPROFILEREQ, client.key(), innoticon.ds.Action.Key.Gen(unique));
@@ -39,5 +40,6 @@ public class Profile extends innoticon.ds.Req {
         this.name = name;
         this.phone = phone;
         this.description = description;
+        this.telegram = telegram;
     }
 }
