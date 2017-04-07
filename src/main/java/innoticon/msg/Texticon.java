@@ -1,6 +1,7 @@
 package innoticon.msg;
 
 import com.google.gson.annotations.Expose;
+import innoticon.ds.Scenario;
 
 /**
  *
@@ -13,7 +14,12 @@ public class Texticon extends innoticon.msg.Text {
         return new innoticon.msg.Texticon(str, image);
     }
 
+    public static innoticon.msg.Texticon Gen(String str, String image, Scenario scenario){
+        return new innoticon.msg.Texticon(str, image, scenario);
+    }
+
     @Expose public String image = null;
+    @Expose public Scenario scenario = null;
 
 
     public String image(){ return image; }
@@ -25,5 +31,12 @@ public class Texticon extends innoticon.msg.Text {
         this.key = new innoticon.ds.Message.Key(getClass().getName());
         this.str = str;
         this.image = image;
+    }
+
+    public Texticon(String str, String image, Scenario scenario){
+        this.key = new innoticon.ds.Message.Key(getClass().getName());
+        this.str = str;
+        this.image = image;
+        this.scenario = scenario;
     }
 }
