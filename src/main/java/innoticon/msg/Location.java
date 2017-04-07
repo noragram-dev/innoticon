@@ -10,7 +10,7 @@ import com.google.gson.annotations.Expose;
 @SuppressWarnings({"WeakerAccess", "unused"})
 public class Location extends innoticon.msg.Text {
 
-    public static innoticon.msg.Text Gen(String str, String image,int latitude,int longitude){
+    public static innoticon.msg.Location Gen(String str, String image,int latitude,int longitude){
         return new innoticon.msg.Location(str, image, latitude, longitude);
     }
 
