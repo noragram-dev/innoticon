@@ -1,6 +1,7 @@
 package innoticon.msg;
 
 import com.google.gson.annotations.Expose;
+import com.oracle.webservices.internal.api.EnvelopeStyle;
 import innoticon.ds.Scenario;
 
 /**

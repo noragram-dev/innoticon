@@ -16,6 +16,7 @@ public class Scenario {
 
     @Expose public HashMap<Integer, String> timeline = new HashMap<>();
     @Expose public boolean repeat = false;
+    @Expose public int current = 0;
 
     public Scenario add(Scene scene){
         if(scene!=null){
