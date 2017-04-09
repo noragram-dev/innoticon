@@ -18,6 +18,17 @@ public class Scenario {
     @Expose public boolean repeat = false;
     @Expose public int current = 0;
 
+    public void next(){
+        if(repeat){
+            current++;
+            if(timeline.size()<=current) {
+                current = 0;
+            }
+        } else if(timeline!=null && current<timeline.size()){
+            current++;
+        }
+    }
+
     public Scenario add(Scene scene){
         if(scene!=null){
             Gson gson = innoticon.Client.Gson();
